@@ -122,25 +122,44 @@ export default function CasinoEnVivoPage() {
             <div className="w-4 h-4 text-purple-400">⚡</div>
             <h3 className="font-bold text-sm tracking-wider">MESAS VIP</h3>
           </div>
-          <div className="grid grid-cols-2 grid-rows-2 gap-3 h-full">
-            <div className="bg-[#181530] border border-[#2a2745] rounded-lg flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-[#201d3a] hover:border-purple-500/50 transition-all group">
-              <Trophy size={32} className="text-yellow-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
-              <span className="text-xs font-bold text-gray-300 group-hover:text-white uppercase tracking-wider text-center">TORNEOS EN VIVO</span>
-            </div>
-            <div className="bg-[#181530] border border-[#2a2745] rounded-lg flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-[#201d3a] hover:border-purple-500/50 transition-all group">
-              <div className="text-purple-400 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"><Gift size={32} /></div>
-              <span className="text-xs font-bold text-gray-300 group-hover:text-white uppercase tracking-wider text-center">BONOS EXCLUSIVOS</span>
-            </div>
-            <div className="bg-[#181530] border border-[#2a2745] rounded-lg flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-[#201d3a] hover:border-purple-500/50 transition-all group">
-              <StarIcon size={32} className="text-purple-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
-              <span className="text-xs font-bold text-gray-300 group-hover:text-white uppercase tracking-wider text-center">MIS MESAS</span>
-            </div>
-            <div className="bg-[#181530] border border-[#2a2745] rounded-lg flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-[#201d3a] hover:border-purple-500/50 transition-all group">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center border-2 border-blue-200/30 group-hover:scale-110 transition-transform">
-                <span className="font-black text-white">VIP</span>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { label: 'TORNEOS EN VIVO', image: undefined as string | undefined },
+              { label: 'BONOS EXCLUSIVOS', image: undefined as string | undefined },
+              { label: 'MIS MESAS', image: undefined as string | undefined },
+              { label: 'CLUB VIP', image: undefined as string | undefined },
+            ].map((card) => (
+              <div
+                key={card.label}
+                className="relative w-full aspect-[16/9] overflow-hidden bg-[#181530] border border-[#2a2745] rounded-lg cursor-pointer hover:bg-[#201d3a] hover:border-purple-500/50 transition-all group"
+              >
+                {card.image && (
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url("${card.image}")` }}
+                  />
+                )}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 px-1 z-10">
+                  {card.label === 'TORNEOS EN VIVO' && (
+                    <Trophy size={20} className="text-yellow-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
+                  )}
+                  {card.label === 'BONOS EXCLUSIVOS' && (
+                    <div className="text-purple-400 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]"><Gift size={20} /></div>
+                  )}
+                  {card.label === 'MIS MESAS' && (
+                    <StarIcon size={20} className="text-purple-500 group-hover:scale-110 transition-transform drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+                  )}
+                  {card.label === 'CLUB VIP' && (
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center border-2 border-blue-200/30 group-hover:scale-110 transition-transform">
+                      <span className="font-black text-white text-[10px]">VIP</span>
+                    </div>
+                  )}
+                  <span className="text-[10px] font-bold text-gray-300 group-hover:text-white uppercase tracking-wider text-center leading-tight">
+                    {card.label}
+                  </span>
+                </div>
               </div>
-              <span className="text-xs font-bold text-gray-300 group-hover:text-white uppercase tracking-wider text-center">CLUB VIP</span>
-            </div>
+            ))}
           </div>
         </div>
       </section>

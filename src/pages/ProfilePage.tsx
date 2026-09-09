@@ -22,9 +22,9 @@ export const ProfilePage = ({ isOpen, onClose, onOpenLimits }: ProfilePageProps)
           onClick={onClose}
         >
           <motion.div 
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="w-full h-full sm:h-auto sm:max-w-lg sm:max-h-[90vh] bg-[#0f0c29] text-white flex flex-col items-center pt-12 pb-24 px-4 sm:px-8 relative sm:rounded-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.5)] overflow-y-auto no-scrollbar"
             onClick={e => e.stopPropagation()}

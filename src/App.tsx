@@ -255,6 +255,12 @@ useEffect(() => {
                   >
                     {showBalance ? <Eye size={16} /> : <EyeOff size={16} />}
                   </button>
+                  <button 
+                    onClick={() => setIsProfileModalOpen(true)}
+                    className="bg-[#141226] border border-[#2a2745] rounded-lg w-8 h-8 sm:w-[34px] sm:h-[34px] flex items-center justify-center text-gray-400 hover:text-white transition-colors shrink-0"
+                  >
+                    <User size={16} />
+                  </button>
                 </div>
               ) : (
                 <button 
@@ -1041,9 +1047,9 @@ useEffect(() => {
           <Cherry size={22} />
           <span className="text-[10px] font-medium">Slots</span>
         </div>
-        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${isProfileModalOpen ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setIsProfileModalOpen(true)}>
-          <User size={22} />
-          <span className="text-[10px] font-medium">Perfil</span>
+        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'promociones' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('promociones')}>
+          <Dices size={22} />
+          <span className="text-[10px] font-medium">Casino</span>
         </div>
       </div>
     </div>

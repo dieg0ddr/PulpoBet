@@ -1076,27 +1076,26 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'slots' || currentPage === 'casino-en-vivo' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('slots')}>
+        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'slots' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('slots')}>
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Slots.svg" 
             alt="Slots" 
             className="w-8 h-8"
             style={{ 
-              filter: (currentPage === 'slots' || currentPage === 'casino-en-vivo') 
+              filter: currentPage === 'slots' 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
           <span className="text-[10px] font-medium">Slots</span>
         </div>
-
-        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'promociones' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('promociones')}>
+        <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'casino-en-vivo' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('casino-en-vivo')}>
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Casino.svg" 
             alt="Casino" 
             className="w-8 h-8"
             style={{ 
-              filter: currentPage === 'promociones' 
+              filter: currentPage === 'casino-en-vivo' 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}

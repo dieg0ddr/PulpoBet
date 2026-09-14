@@ -1025,30 +1025,73 @@ useEffect(() => {
           <Menu size={22} />
           <span className="text-[10px] font-medium">Menú</span>
         </div>
+        
         <div 
           className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'deportes' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`}
           onClick={() => setCurrentPage('deportes')}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>sports_soccer</span>
+          <img 
+            src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Soccer.svg" 
+            alt="Deportes" 
+            className="w-[22px] h-[22px]"
+            style={{ 
+              filter: currentPage === 'deportes' 
+                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
+                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+            }}
+          />
           <span className="text-[10px] font-medium">Deportes</span>
         </div>
         
         <div className="flex flex-col items-center justify-center relative cursor-pointer flex-1 h-12" onClick={() => currentPage === 'deportes' ? null : setCurrentPage('home')}>
           <div className={`w-14 h-14 rounded-full border-2 ${currentPage === 'home' || currentPage === 'deportes' ? 'border-[#8f4bff] shadow-[0_0_20px_rgba(143,75,255,0.5)]' : 'border-[#6b25e6] shadow-[0_0_15px_rgba(107,37,230,0.3)]'} bg-[#070514] flex items-center justify-center absolute top-1/2 -translate-y-[65%] transition-all`}>
             {currentPage === 'deportes' ? (
-              <span className="material-symbols-outlined text-[#8f4bff]" style={{ fontSize: '24px' }}>receipt_long</span>
+              <img 
+                src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Cupon.svg" 
+                alt="Cupón" 
+                className="w-6 h-6"
+                style={{ filter: 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' }}
+              />
             ) : (
-              <Home size={22} className={currentPage === 'home' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'} />
+              <img 
+                src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Home.svg" 
+                alt="Home" 
+                className="w-[22px] h-[22px]"
+                style={{ 
+                  filter: currentPage === 'home' 
+                    ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
+                    : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+                }}
+              />
             )}
           </div>
         </div>
 
         <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'slots' || currentPage === 'casino-en-vivo' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('slots')}>
-          <Cherry size={22} />
+          <img 
+            src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Slots.svg" 
+            alt="Slots" 
+            className="w-[22px] h-[22px]"
+            style={{ 
+              filter: (currentPage === 'slots' || currentPage === 'casino-en-vivo') 
+                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
+                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+            }}
+          />
           <span className="text-[10px] font-medium">Slots</span>
         </div>
+
         <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'promociones' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('promociones')}>
-          <Dices size={22} />
+          <img 
+            src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Casino.svg" 
+            alt="Casino" 
+            className="w-[22px] h-[22px]"
+            style={{ 
+              filter: currentPage === 'promociones' 
+                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
+                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+            }}
+          />
           <span className="text-[10px] font-medium">Casino</span>
         </div>
       </div>

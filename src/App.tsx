@@ -1022,7 +1022,16 @@ useEffect(() => {
           className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${isMainMenuOpen ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`}
           onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
         >
-          <Menu size={22} />
+          <img 
+            src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Menu.svg" 
+            alt="Menú" 
+            className="w-[22px] h-[22px]"
+            style={{ 
+              filter: isMainMenuOpen 
+                ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
+                : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
+            }}
+          />
           <span className="text-[10px] font-medium">Menú</span>
         </div>
         
@@ -1036,8 +1045,8 @@ useEffect(() => {
             className="w-[22px] h-[22px]"
             style={{ 
               filter: currentPage === 'deportes' 
-                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
-                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+                ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
+                : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
           <span className="text-[10px] font-medium">Deportes</span>
@@ -1050,7 +1059,7 @@ useEffect(() => {
                 src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Cupon.svg" 
                 alt="Cupón" 
                 className="w-6 h-6"
-                style={{ filter: 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' }}
+                style={{ filter: 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' }}
               />
             ) : (
               <img 
@@ -1059,8 +1068,8 @@ useEffect(() => {
                 className="w-[22px] h-[22px]"
                 style={{ 
                   filter: currentPage === 'home' 
-                    ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
-                    : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+                    ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
+                    : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
                 }}
               />
             )}
@@ -1074,8 +1083,8 @@ useEffect(() => {
             className="w-[22px] h-[22px]"
             style={{ 
               filter: (currentPage === 'slots' || currentPage === 'casino-en-vivo') 
-                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
-                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+                ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
+                : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
           <span className="text-[10px] font-medium">Slots</span>
@@ -1088,8 +1097,8 @@ useEffect(() => {
             className="w-[22px] h-[22px]"
             style={{ 
               filter: currentPage === 'promociones' 
-                ? 'invert(37%) sepia(93%) saturate(3501%) hue-rotate(253deg) brightness(98%) contrast(105%)' 
-                : 'invert(75%) sepia(8%) saturate(366%) hue-rotate(201deg) brightness(91%) contrast(89%)' 
+                ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
+                : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
           <span className="text-[10px] font-medium">Casino</span>

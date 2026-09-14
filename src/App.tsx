@@ -1025,7 +1025,7 @@ useEffect(() => {
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Menu.svg" 
             alt="Menú" 
-            className="w-[22px] h-[22px]"
+            className="w-8 h-8"
             style={{ 
               filter: isMainMenuOpen 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
@@ -1042,7 +1042,7 @@ useEffect(() => {
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Soccer.svg" 
             alt="Deportes" 
-            className="w-[22px] h-[22px]"
+            className="w-8 h-8"
             style={{ 
               filter: currentPage === 'deportes' 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
@@ -1058,14 +1058,14 @@ useEffect(() => {
               <img 
                 src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Cupon.svg" 
                 alt="Cupón" 
-                className="w-6 h-6"
+                className="w-8 h-8"
                 style={{ filter: 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' }}
               />
             ) : (
               <img 
                 src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Home.svg" 
                 alt="Home" 
-                className="w-[22px] h-[22px]"
+                className="w-8 h-8"
                 style={{ 
                   filter: currentPage === 'home' 
                     ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
@@ -1080,7 +1080,7 @@ useEffect(() => {
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Slots.svg" 
             alt="Slots" 
-            className="w-[22px] h-[22px]"
+            className="w-8 h-8"
             style={{ 
               filter: (currentPage === 'slots' || currentPage === 'casino-en-vivo') 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 
@@ -1094,7 +1094,7 @@ useEffect(() => {
           <img 
             src="https://salsa-tech.com/wp-content/uploads/pulpo/icones/Casino.svg" 
             alt="Casino" 
-            className="w-[22px] h-[22px]"
+            className="w-8 h-8"
             style={{ 
               filter: currentPage === 'promociones' 
                 ? 'brightness(0) saturate(100%) invert(32%) sepia(97%) saturate(2331%) hue-rotate(247deg) brightness(101%) contrast(104%)' 

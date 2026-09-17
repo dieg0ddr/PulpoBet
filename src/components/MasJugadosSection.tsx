@@ -30,7 +30,6 @@ export default function MasJugadosSection({ title, games, onPlayGame }: MasJugad
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <h2 className="text-white font-bold tracking-wider flex items-center gap-2 text-lg uppercase">
-            <Crown className="text-yellow-500" size={20} />
             {title}
           </h2>
           <div className="flex items-center gap-1 text-gray-400">

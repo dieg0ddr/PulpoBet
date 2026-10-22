@@ -267,7 +267,7 @@ export const BetSlip: React.FC<BetSlipProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1">
-                  <span className="text-xs text-zinc-400 font-medium">{t("R$")}</span>
+                  <span className="text-xs text-zinc-400 font-medium">ARS$</span>
                   <input
                     type="number"
                     min="1"
@@ -308,7 +308,7 @@ export const BetSlip: React.FC<BetSlipProps> = ({
                 <div className="flex justify-between items-center text-zinc-400">
                   <span>{t("Valor total de aposta")}</span>
                   <span className="font-mono text-white tabular-nums">
-                    {t("R$")} {t(stake.toFixed(2).replace('.', ','))}
+                    ARS$ {t(stake.toFixed(2).replace('.', ','))}
                   </span>
                 </div>
                 {bonusPercent > 0 && (
@@ -317,14 +317,14 @@ export const BetSlip: React.FC<BetSlipProps> = ({
                       {t("Ganhos extra")} <Gift className="w-3 h-3" />
                     </span>
                     <span className="font-mono font-bold tabular-nums">
-                      {t("R$")} {t(bonusAmount.toFixed(2).replace('.', ','))}
+                      ARS$ {t(bonusAmount.toFixed(2).replace('.', ','))}
                     </span>
                   </div>
                 )}
                 <div className="flex justify-between items-center pt-2 border-t border-[#231e3f] text-sm">
                   <span className="font-semibold text-zinc-300">{t("Ganho total")}</span>
                   <span className="font-mono font-black text-[#8f4bff] text-base tabular-nums">
-                    {t("R$")} {t(totalPayout.toFixed(2).replace('.', ','))}
+                    ARS$ {t(totalPayout.toFixed(2).replace('.', ','))}
                   </span>
                 </div>
               </div>
@@ -342,7 +342,7 @@ export const BetSlip: React.FC<BetSlipProps> = ({
                   onClick={handlePlaceBet}
                   className="flex-1 py-3 px-4 rounded-lg bg-[#8f4bff] hover:bg-[#7c3aed] text-white font-extrabold text-xs uppercase tracking-wider transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(143,75,255,0.25)] flex items-center justify-center gap-2"
                 >
-                  {t(user.isLoggedIn ? `${t('Fazer aposta')} (R$ ${stake.toFixed(2)})` : 'Faça login ou cadastre-se')}
+                  {t(user.isLoggedIn ? `${t('Fazer aposta')} (ARS$ ${stake.toFixed(2).replace('.', ',')})` : 'Faça login ou cadastre-se')}
                 </button>
               </div>
             </>

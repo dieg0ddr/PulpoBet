@@ -433,15 +433,15 @@ useEffect(() => {
           >
             {([
               { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/01.png', label: 'SLOTS', color: 'text-purple-400', page: 'slots' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/03.png', label: 'SPECIAL SLOTS', color: 'text-yellow-500' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/03.png', label: 'SPECIAL SLOTS', color: 'text-yellow-500', page: 'slots' },
               { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/04.png', label: 'JOKERS', color: 'text-red-500', page: 'jokers' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/05.png', label: 'TOP 50', color: 'text-yellow-400' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/05.png', label: 'TOP 50', color: 'text-yellow-400', page: 'slots' },
               { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/06.png', label: 'DEPORTES', color: 'text-gray-300', page: 'deportes' },
               { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/07.png', label: 'CASINO EN VIVO', color: 'text-red-400', page: 'casino-en-vivo' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/08.png', label: 'TORNEOS', color: 'text-yellow-600' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/09.png', label: 'CRASH GAMES', color: 'text-blue-300' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/11.png', label: 'BINGO', color: 'text-purple-300' },
-              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/10.png', label: 'HÍPICAS', color: 'text-green-400' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/08.png', label: 'TORNEOS', color: 'text-yellow-600', page: 'slots' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/09.png', label: 'CRASH GAMES', color: 'text-blue-300', page: 'slots' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/11.png', label: 'BINGO', color: 'text-purple-300', page: 'slots' },
+              { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/10.png', label: 'HÍPICAS', color: 'text-green-400', page: 'slots' },
               { image: 'https://salsa-tech.com/wp-content/uploads/pulpo/verticais/12.png', label: 'PROMOCIONES', color: 'text-pink-400', page: 'promociones' }
             ] as any[]).map((item, idx) => (
               <div 
@@ -607,8 +607,6 @@ useEffect(() => {
         <>
           <RecomendadosCarousel title="Recomendados para vos" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
           <RecomendadosCarousel title="Pragmatic play" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
-          <RecomendadosCarousel title="Salsa Studio" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
-          <RecomendadosCarousel title="Popok" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
         </>
       )}
 

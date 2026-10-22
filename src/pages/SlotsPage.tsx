@@ -6,8 +6,8 @@ import MiniMasJugadosCarousel from '../components/MiniMasJugadosCarousel';
 
 
 const slotsBanners = [
-  { id: 1, image: 'https://salsa-tech.com/wp-content/uploads/pulpo/-ESTRENOS.png' },
-  { id: 2, image: 'https://salsa-tech.com/wp-content/uploads/pulpo/-LOS_MAS_JUGADOS.png' }
+  { id: 1, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Mas%20Jugados.jpg' },
+  { id: 2, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Mas%20Jugados.jpg' }
 ];
 
 export default function SlotsPage({ onPlayGame }: { onPlayGame?: (game: any) => void }) {

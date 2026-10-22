@@ -9,6 +9,7 @@ import {
   Shield,
   Activity,
 } from 'lucide-react';
+import { t } from '../../i18n';
 
 export const PitchTracker: React.FC = () => {
   const [isMinimized, setIsMinimized] = useState(false);
@@ -50,14 +51,14 @@ export const PitchTracker: React.FC = () => {
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
           <span className="text-xs font-bold text-white tracking-wide">
-            AO VIVO - Japão x Equador
+            {t("AO VIVO - Japão x Equador")}
           </span>
-          <span className="text-[10px] text-zinc-400 font-mono">2T {gameClock}</span>
+          <span className="text-[10px] text-zinc-400 font-mono">{t("2T")} {t(gameClock)}</span>
         </div>
         <button
           onClick={() => setIsMinimized(!isMinimized)}
           className="text-zinc-400 hover:text-white p-1 rounded hover:bg-[#241f40] transition-colors"
-          title={isMinimized ? 'Expandir' : 'Minimizar'}
+          title={t(isMinimized ? 'Expandir' : 'Minimizar')}
         >
           {isMinimized ? <Maximize2 className="w-3.5 h-3.5" /> : <Minus className="w-3.5 h-3.5" />}
         </button>
@@ -131,7 +132,7 @@ export const PitchTracker: React.FC = () => {
                 >
                   <div className="px-2.5 py-1 rounded bg-[#0d0b19]/90 border border-white/20 backdrop-blur-xs text-[11px] font-medium text-white shadow-lg whitespace-nowrap flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#8f4bff]"></span>
-                    <span>{actionLabel}</span>
+                    <span>{t(actionLabel)}</span>
                   </div>
                 </div>
               </div>
@@ -142,14 +143,14 @@ export const PitchTracker: React.FC = () => {
           {activeTab === 'stats' && (
             <div className="p-3 space-y-2.5 text-xs">
               <div className="flex justify-between items-center text-zinc-400 font-bold border-b border-[#241f40] pb-1">
-                <span>Japão</span>
-                <span className="text-zinc-500">ESTATÍSTICAS</span>
-                <span>Equador</span>
+                <span>{t("Japão")}</span>
+                <span className="text-zinc-500">{t("ESTATÍSTICAS")}</span>
+                <span>{t("Equador")}</span>
               </div>
               <div className="space-y-1.5">
                 <div className="flex justify-between text-zinc-300">
                   <span>54%</span>
-                  <span className="text-zinc-400 text-[11px]">Posse de bola</span>
+                  <span className="text-zinc-400 text-[11px]">{t("Posse de bola")}</span>
                   <span>46%</span>
                 </div>
                 <div className="w-full bg-[#211c38] h-1.5 rounded-full overflow-hidden flex">
@@ -160,7 +161,7 @@ export const PitchTracker: React.FC = () => {
               <div className="space-y-1.5">
                 <div className="flex justify-between text-zinc-300">
                   <span>8</span>
-                  <span className="text-zinc-400 text-[11px]">Finalizações</span>
+                  <span className="text-zinc-400 text-[11px]">{t("Finalizações")}</span>
                   <span>5</span>
                 </div>
                 <div className="w-full bg-[#211c38] h-1.5 rounded-full overflow-hidden flex">
@@ -170,17 +171,17 @@ export const PitchTracker: React.FC = () => {
               </div>
               <div className="flex justify-between text-zinc-300 py-0.5">
                 <span>4</span>
-                <span className="text-zinc-400 text-[11px]">No gol</span>
+                <span className="text-zinc-400 text-[11px]">{t("No gol")}</span>
                 <span>2</span>
               </div>
               <div className="flex justify-between text-zinc-300 py-0.5">
                 <span>5</span>
-                <span className="text-zinc-400 text-[11px]">Escanteios</span>
+                <span className="text-zinc-400 text-[11px]">{t("Escanteios")}</span>
                 <span>3</span>
               </div>
               <div className="flex justify-between text-zinc-300 py-0.5">
                 <span>1</span>
-                <span className="text-zinc-400 text-[11px]">Cartões Amarelos</span>
+                <span className="text-zinc-400 text-[11px]">{t("Cartões Amarelos")}</span>
                 <span>2</span>
               </div>
             </div>
@@ -191,19 +192,19 @@ export const PitchTracker: React.FC = () => {
             <div className="p-3 space-y-2 text-xs text-zinc-300 max-h-48 overflow-y-auto">
               <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
                 <span className="font-mono text-white">84'</span>
-                <span>Cartão Amarelo para Equador (#7 Caicedo)</span>
+                <span>{t("Cartão Amarelo para Equador (#7 Caicedo)")}</span>
               </div>
               <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
                 <span className="font-mono text-white">72'</span>
-                <span>Substituição Japão: Sai Tanaka, entra Minamino</span>
+                <span>{t("Substituição Japão: Sai Tanaka, entra Minamino")}</span>
               </div>
               <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
                 <span className="font-mono text-white">61'</span>
-                <span>Chute no travessão de Japão!</span>
+                <span>{t("Chute no travessão de Japão!")}</span>
               </div>
               <div className="flex items-center gap-2 text-zinc-400 text-[11px]">
                 <span className="font-mono text-white">45'</span>
-                <span>Início do 2º Tempo</span>
+                <span>{t("Início do 2º Tempo")}</span>
               </div>
             </div>
           )}
@@ -211,23 +212,23 @@ export const PitchTracker: React.FC = () => {
           {/* Lineups View */}
           {activeTab === 'lineups' && (
             <div className="p-3 text-xs text-zinc-300 space-y-2">
-              <div className="font-semibold text-white">Escalações Confirmadas</div>
+              <div className="font-semibold text-white">{t("Escalações Confirmadas")}</div>
               <div className="grid grid-cols-2 gap-2 text-[11px]">
                 <div className="bg-[#18142b] p-2 rounded border border-[#262042]">
-                  <div className="font-bold text-[#8f4bff] mb-1">Japão (4-3-3)</div>
-                  <div>12 Schmidt (G)</div>
-                  <div>4 Itakura</div>
-                  <div>16 Tomiyasu</div>
-                  <div>6 Endo</div>
-                  <div>10 Doan</div>
+                  <div className="font-bold text-[#8f4bff] mb-1">{t("Japão (4-3-3)")}</div>
+                  <div>{t("12 Schmidt (G)")}</div>
+                  <div>{t("4 Itakura")}</div>
+                  <div>{t("16 Tomiyasu")}</div>
+                  <div>{t("6 Endo")}</div>
+                  <div>{t("10 Doan")}</div>
                 </div>
                 <div className="bg-[#18142b] p-2 rounded border border-[#262042]">
-                  <div className="font-bold text-amber-400 mb-1">Equador (4-4-2)</div>
-                  <div>1 Galindez (G)</div>
-                  <div>3 Hincapie</div>
-                  <div>2 Torres</div>
-                  <div>23 Caicedo</div>
-                  <div>13 Valencia</div>
+                  <div className="font-bold text-amber-400 mb-1">{t("Equador (4-4-2)")}</div>
+                  <div>{t("1 Galindez (G)")}</div>
+                  <div>{t("3 Hincapie")}</div>
+                  <div>{t("2 Torres")}</div>
+                  <div>{t("23 Caicedo")}</div>
+                  <div>{t("13 Valencia")}</div>
                 </div>
               </div>
             </div>
@@ -237,7 +238,7 @@ export const PitchTracker: React.FC = () => {
           {activeTab === 'settings' && (
             <div className="p-3 space-y-2 text-xs">
               <div className="flex items-center justify-between text-zinc-300">
-                <span>Efeitos sonoros do radar</span>
+                <span>{t("Efeitos sonoros do radar")}</span>
                 <button
                   onClick={() => setIsMuted(!isMuted)}
                   className="p-1 rounded bg-[#211c3b] hover:bg-[#2c254d] text-white"
@@ -246,7 +247,7 @@ export const PitchTracker: React.FC = () => {
                 </button>
               </div>
               <div className="text-[11px] text-zinc-400">
-                Acompanhe o posicionamento tático e lances perigosos em tempo real com delay inferior a 1s.
+                {t("Acompanhe o posicionamento tático e lances perigosos em tempo real com delay inferior a 1s.")}
               </div>
             </div>
           )}
@@ -258,7 +259,7 @@ export const PitchTracker: React.FC = () => {
               className={`p-1.5 rounded transition-colors ${
                 activeTab === 'stats' ? 'text-[#8f4bff] bg-[#1f1a36]' : 'hover:text-white'
               }`}
-              title="Estatísticas"
+              title={t("Estatísticas")}
             >
               <BarChart2 className="w-4 h-4" />
             </button>
@@ -267,7 +268,7 @@ export const PitchTracker: React.FC = () => {
               className={`p-1.5 rounded transition-colors ${
                 activeTab === 'pitch' ? 'text-[#8f4bff] bg-[#1f1a36]' : 'hover:text-white'
               }`}
-              title="Campo de Jogo"
+              title={t("Campo de Jogo")}
             >
               <Activity className="w-4 h-4" />
             </button>
@@ -276,7 +277,7 @@ export const PitchTracker: React.FC = () => {
               className={`p-1.5 rounded transition-colors ${
                 activeTab === 'events' ? 'text-[#8f4bff] bg-[#1f1a36]' : 'hover:text-white'
               }`}
-              title="Lances"
+              title={t("Lances")}
             >
               <div className="w-4 h-4 rounded-full border border-current flex items-center justify-center text-[9px] font-bold">
                 ⚽
@@ -287,7 +288,7 @@ export const PitchTracker: React.FC = () => {
               className={`p-1.5 rounded transition-colors ${
                 activeTab === 'lineups' ? 'text-[#8f4bff] bg-[#1f1a36]' : 'hover:text-white'
               }`}
-              title="Escalações"
+              title={t("Escalações")}
             >
               <Shield className="w-4 h-4" />
             </button>
@@ -296,7 +297,7 @@ export const PitchTracker: React.FC = () => {
               className={`p-1.5 rounded transition-colors ${
                 activeTab === 'settings' ? 'text-[#8f4bff] bg-[#1f1a36]' : 'hover:text-white'
               }`}
-              title="Configurações"
+              title={t("Configurações")}
             >
               <SlidersHorizontal className="w-4 h-4" />
             </button>

@@ -28,6 +28,7 @@ import {
   BoxingIcon,
   HandballIcon,
 } from './SportIcons';
+import { t } from '../../i18n';
 
 interface SidebarProps {
   selectedTimeFilter: string;
@@ -109,7 +110,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         >
           <div className="flex items-center gap-2">
             <Zap className="w-4 h-4 text-[#8f4bff]" />
-            <span className="font-semibold">Super Odds</span>
+            <span className="font-semibold">{t("Super Odds")}</span>
           </div>
           <ChevronDown className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white" />
         </button>
@@ -120,7 +121,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         >
           <div className="flex items-center gap-2">
             <Tag className="w-4 h-4 text-[#8f4bff]" />
-            <span className="font-semibold">Promoções</span>
+            <span className="font-semibold">{t("Promoções")}</span>
           </div>
           <ChevronDown className="w-3.5 h-3.5 text-zinc-400 group-hover:text-white" />
         </button>
@@ -131,20 +132,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
         >
           <div className="flex items-center gap-2">
             <Gift className="w-4 h-4 text-[#8f4bff]" />
-            <span className="font-semibold">Bônus</span>
+            <span className="font-semibold">{t("Bônus")}</span>
           </div>
         </button>
       </div>
 
       {/* Instructional helper box */}
       <div className="p-2.5 rounded-lg bg-[#141124] border border-[#1f1a36] text-[11px] text-zinc-400 leading-snug">
-        Aqui pode entrar um menu de ícones mudando o menu abaixo...
+        {t("Aqui pode entrar um menu de ícones mudando o menu abaixo...")}
       </div>
 
       {/* Main Menu Section */}
       <div className="space-y-3">
         <div className="text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
-          MENU
+          {t("MENU")}
         </div>
 
         {/* Time filters bar */}
@@ -159,7 +160,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   : 'bg-[#18142a] text-zinc-400 hover:text-white hover:bg-[#211c38]'
               }`}
             >
-              {tf}
+              {t(tf)}
             </button>
           ))}
         </div>
@@ -174,11 +175,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             >
               <div className="flex items-center gap-2">
                 <FootballIcon className="w-4 h-4 text-zinc-300" />
-                <span className="font-bold text-white text-sm">Futebol</span>
+                <span className="font-bold text-white text-sm">{t("Futebol")}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-red-600 text-white">
-                  AO VIVO
+                  {t("AO VIVO")}
                 </span>
                 <span className="text-zinc-500 text-[11px] font-mono">1470</span>
                 {openSections['futebol'] ? (
@@ -200,7 +201,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   >
                     <div className="flex items-center gap-2">
                       <Flame className="w-3.5 h-3.5 text-orange-400" />
-                      <span className="font-semibold text-white">Melhores ligas de Futebol</span>
+                      <span className="font-semibold text-white">{t("Melhores ligas de Futebol")}</span>
                     </div>
                     {openSections['melhores_ligas'] ? (
                       <ChevronDown className="w-3 h-3 text-zinc-400" />
@@ -223,7 +224,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                           }`}
                         >
                           <LeagueBadge type={league.badgeType} className="w-4 h-4 shrink-0" />
-                          <span className="truncate group-hover:text-white">{league.name}</span>
+                          <span className="truncate group-hover:text-white">{t(league.name)}</span>
                         </div>
                       ))}
                     </div>
@@ -244,14 +245,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                         }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="text-sm leading-none">{country.flag}</span>
-                          <span className="truncate">{country.name}</span>
+                          <span className="text-sm leading-none">{t(country.flag)}</span>
+                          <span className="truncate">{t(country.name)}</span>
                         </div>
 
                         <div className="flex items-center gap-1.5">
                           {country.isLive && (
                             <span className="px-1 py-0.2 rounded text-[8px] font-bold bg-red-600 text-white">
-                              AO VIVO
+                              {t("AO VIVO")}
                             </span>
                           )}
                           {hasSubLeagues && (
@@ -275,7 +276,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                                 className="flex items-center justify-between p-1.5 rounded hover:bg-[#1b1730] cursor-pointer text-zinc-300 text-[11px]"
                               >
                                 <div className="flex items-center gap-2 truncate">
-                                  <span className="truncate">{sub.name}</span>
+                                  <span className="truncate">{t(sub.name)}</span>
                                 </div>
                                 <button
                                   onClick={(e) => toggleFavorite(sub.id, e)}
@@ -313,17 +314,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                 >
                   <div className="flex items-center gap-2">
-                    {renderSportIcon(sport.iconType)}
-                    <span className="font-bold text-zinc-100 text-sm">{sport.name}</span>
+                    {t(renderSportIcon(sport.iconType))}
+                    <span className="font-bold text-zinc-100 text-sm">{t(sport.name)}</span>
                   </div>
 
                   <div className="flex items-center gap-1.5">
                     {sport.isLive && (
                       <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-red-600 text-white">
-                        AO VIVO
+                        {t("AO VIVO")}
                       </span>
                     )}
-                    <span className="text-zinc-500 text-[11px] font-mono">{sport.totalCount}</span>
+                    <span className="text-zinc-500 text-[11px] font-mono">{t(sport.totalCount)}</span>
                     {isOpen ? (
                       <ChevronDown className="w-3.5 h-3.5 text-zinc-400" />
                     ) : (
@@ -347,15 +348,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
                               : 'text-zinc-300 hover:text-white hover:bg-[#19152c]'
                           }`}
                         >
-                          <span className="truncate">{sub.name}</span>
+                          <span className="truncate">{t(sub.name)}</span>
                           <div className="flex items-center gap-1.5">
                             {sub.isLive && (
                               <span className="px-1 py-0.2 rounded text-[8px] font-bold bg-red-600 text-white">
-                                AO VIVO
+                                {t("AO VIVO")}
                               </span>
                             )}
                             {sub.count && (
-                              <span className="text-zinc-500 font-mono text-[10px]">{sub.count}</span>
+                              <span className="text-zinc-500 font-mono text-[10px]">{t(sub.count)}</span>
                             )}
                           </div>
                         </div>

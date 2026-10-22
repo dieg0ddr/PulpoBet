@@ -8,6 +8,7 @@ import {
   Diamond, 
   Heart 
 } from 'lucide-react';
+import { t } from '../i18n';
 
 const options = [
   { icon: MonitorPlay, label: 'MESAS EN VIVO' },
@@ -28,7 +29,7 @@ export default function CasinoEnVivoSection() {
       <div className="flex justify-between items-center">
         <h2 className="text-[#a8a8b8] font-bold tracking-wider flex items-center gap-2">
           <div className="w-2 h-2 rotate-45 bg-purple-500"></div>
-          Casino en vivo
+          {t("Casino en vivo")}
         </h2>
       </div>
 
@@ -52,7 +53,7 @@ export default function CasinoEnVivoSection() {
               ) : null}
             </div>
             <span className="text-[10px] font-bold text-gray-400 group-hover:text-white text-center tracking-wider leading-tight">
-              {chip.label}
+              {t(chip.label)}
             </span>
           </div>
         ))}

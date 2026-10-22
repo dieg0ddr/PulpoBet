@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { OddSelection } from '../types/sportsbook';
 import { PRE_MATCHES_BY_LEAGUE, LIVE_SECTION_MATCHES } from '../data/mockSportsData';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import { t } from '../../i18n';
 
 interface MatchesListProps {
   selectedOdds: OddSelection[];
@@ -54,17 +55,17 @@ export const MatchesList: React.FC<MatchesListProps> = ({
       <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
         {/* Time filters */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
-          {(['Todos', 'Hoje', '3h', '6h', 'Amanhã'] as const).map((t) => (
+          {(['Todos', 'Hoje', '3h', '6h', 'Amanhã'] as const).map((tf) => (
             <button
-              key={t}
-              onClick={() => setTimeFilter(t)}
+              key={tf}
+              onClick={() => setTimeFilter(tf)}
               className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
-                timeFilter === t
+                timeFilter === tf
                   ? 'bg-[#8f4bff] text-white shadow-xs font-bold'
                   : 'bg-[#171428] hover:bg-[#211c38] text-zinc-400 hover:text-white border border-[#231e3c]'
               }`}
             >
-              {t}
+              {t(tf)}
             </button>
           ))}
         </div>
@@ -81,7 +82,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                   : 'bg-[#171428] hover:bg-[#211c38] text-zinc-400 hover:text-white border border-[#231e3c]'
               }`}
             >
-              {m}
+              {t(m)}
             </button>
           ))}
         </div>
@@ -104,11 +105,11 @@ export const MatchesList: React.FC<MatchesListProps> = ({
               >
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-white tracking-wide">
-                    {league.leagueName}
+                    {t(league.leagueName)}
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-zinc-500 font-mono text-xs">{league.count}</span>
+                  <span className="text-zinc-500 font-mono text-xs">{t(league.count)}</span>
                   {isOpen ? (
                     <ChevronUp className="w-4 h-4 text-zinc-400" />
                   ) : (
@@ -132,12 +133,12 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                         {/* Time & Teams */}
                         <div className="flex items-center gap-4 min-w-[240px]">
                           <span className="font-mono text-xs text-zinc-400 font-medium">
-                            {match.time}
+                            {t(match.time)}
                           </span>
                           <div className="flex items-center gap-2 text-xs font-semibold text-white">
-                            <span className="truncate">{match.homeTeam}</span>
-                            <span className="text-zinc-500 font-normal">x</span>
-                            <span className="truncate">{match.awayTeam}</span>
+                            <span className="truncate">{t(match.homeTeam)}</span>
+                            <span className="text-zinc-500 font-normal">{t("x")}</span>
+                            <span className="truncate">{t(match.awayTeam)}</span>
                           </div>
                         </div>
 
@@ -161,7 +162,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                                 : 'bg-[#1a1631] hover:bg-[#262042] text-zinc-300 border border-[#272147]'
                             }`}
                           >
-                            {m.home.odds.toFixed(2).replace('.', ',')}
+                            {t(m.home.odds.toFixed(2).replace('.', ','))}
                           </button>
 
                           {/* Draw */}
@@ -183,7 +184,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                                   : 'bg-[#1a1631] hover:bg-[#262042] text-zinc-300 border border-[#272147]'
                               }`}
                             >
-                              {m.draw.odds.toFixed(2).replace('.', ',')}
+                              {t(m.draw.odds.toFixed(2).replace('.', ','))}
                             </button>
                           )}
 
@@ -205,7 +206,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                                 : 'bg-[#1a1631] hover:bg-[#262042] text-zinc-300 border border-[#272147]'
                             }`}
                           >
-                            {m.away.odds.toFixed(2).replace('.', ',')}
+                            {t(m.away.odds.toFixed(2).replace('.', ','))}
                           </button>
                         </div>
                       </div>
@@ -223,7 +224,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
         {/* Header with live indicator */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[#211c39]">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-extrabold text-white tracking-wider">AO VIVO</span>
+            <span className="text-sm font-extrabold text-white tracking-wider">{t("AO VIVO")}</span>
             <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
           </div>
 
@@ -239,7 +240,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                     : 'text-zinc-400 hover:text-white'
                 }`}
               >
-                {sp.label}
+                {t(sp.label)}
               </button>
             ))}
           </div>
@@ -247,17 +248,17 @@ export const MatchesList: React.FC<MatchesListProps> = ({
 
         {/* Market Dropdown Headers Bar */}
         <div className="hidden lg:grid grid-cols-12 gap-3 text-[11px] font-bold text-zinc-400 px-3">
-          <div className="col-span-5">Partida</div>
+          <div className="col-span-5">{t("Partida")}</div>
           <div className="col-span-3 flex items-center justify-between bg-[#18152a] px-2 py-1 rounded border border-[#25203d]">
-            <span>1X2</span>
+            <span>{t("1X2")}</span>
             <ChevronDown className="w-3 h-3 text-zinc-500" />
           </div>
           <div className="col-span-2 flex items-center justify-between bg-[#18152a] px-2 py-1 rounded border border-[#25203d]">
-            <span>Total de Gols</span>
+            <span>{t("Total de Gols")}</span>
             <ChevronDown className="w-3 h-3 text-zinc-500" />
           </div>
           <div className="col-span-2 flex items-center justify-between bg-[#18152a] px-2 py-1 rounded border border-[#25203d]">
-            <span>Ambos os Times Marcam</span>
+            <span>{t("Ambos os Times Marcam")}</span>
             <ChevronDown className="w-3 h-3 text-zinc-500" />
           </div>
         </div>
@@ -277,23 +278,23 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                   <div className="lg:col-span-5 space-y-1.5">
                     <div className="flex items-center gap-2">
                       <span className="px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-red-600 text-white">
-                        AO VIVO
+                        {t("AO VIVO")}
                       </span>
                       <span className="text-[11px] font-mono text-zinc-300">
-                        {match.liveTime}
+                        {t(match.liveTime)}
                       </span>
                     </div>
 
                     <div className="text-sm font-bold text-white">
-                      <div>{match.homeTeam}</div>
-                      <div>{match.awayTeam}</div>
+                      <div>{t(match.homeTeam)}</div>
+                      <div>{t(match.awayTeam)}</div>
                     </div>
 
                     <div className="flex items-center gap-1 text-[11px] text-zinc-400">
                       <span className="w-3 h-3 rounded-full border border-zinc-600 flex items-center justify-center text-[8px]">
                         ⚽
                       </span>
-                      <span>{match.competition}</span>
+                      <span>{t(match.competition)}</span>
                     </div>
                   </div>
 
@@ -318,10 +319,10 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                       }`}
                     >
                       <div className="font-mono font-bold text-xs">
-                        {match.markets.winner!.home.odds.toFixed(2)}
+                        {t(match.markets.winner!.home.odds.toFixed(2))}
                       </div>
                       <div className="text-[9px] truncate opacity-70">
-                        {match.homeTeam}
+                        {t(match.homeTeam)}
                       </div>
                     </button>
 
@@ -344,9 +345,9 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                       }`}
                     >
                       <div className="font-mono font-bold text-xs">
-                        {match.markets.winner!.draw!.odds.toFixed(2)}
+                        {t(match.markets.winner!.draw!.odds.toFixed(2))}
                       </div>
-                      <div className="text-[9px] truncate opacity-70">Empate</div>
+                      <div className="text-[9px] truncate opacity-70">{t("Empate")}</div>
                     </button>
 
                     {/* Away */}
@@ -368,10 +369,10 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                       }`}
                     >
                       <div className="font-mono font-bold text-xs">
-                        {match.markets.winner!.away.odds.toFixed(2)}
+                        {t(match.markets.winner!.away.odds.toFixed(2))}
                       </div>
                       <div className="text-[9px] truncate opacity-70">
-                        {match.awayTeam}
+                        {t(match.awayTeam)}
                       </div>
                     </button>
                   </div>
@@ -396,10 +397,10 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                       }`}
                     >
                       <div className="font-mono font-bold text-xs">
-                        {match.markets.totalGoals!.over.odds.toFixed(2)}
+                        {t(match.markets.totalGoals!.over.odds.toFixed(2))}
                       </div>
                       <div className="text-[9px] truncate opacity-70">
-                        Mais de 3.5
+                        {t("Mais de 3.5")}
                       </div>
                     </button>
 
@@ -421,10 +422,10 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                       }`}
                     >
                       <div className="font-mono font-bold text-xs">
-                        {match.markets.totalGoals!.under.odds.toFixed(2)}
+                        {t(match.markets.totalGoals!.under.odds.toFixed(2))}
                       </div>
                       <div className="text-[9px] truncate opacity-70">
-                        Menos de 3.5
+                        {t("Menos de 3.5")}
                       </div>
                     </button>
                   </div>
@@ -450,9 +451,9 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                         }`}
                       >
                         <div className="font-mono font-bold text-xs">
-                          {match.markets.bothToScore!.yes.odds.toFixed(2)}
+                          {t(match.markets.bothToScore!.yes.odds.toFixed(2))}
                         </div>
-                        <div className="text-[9px] truncate opacity-70">Sim</div>
+                        <div className="text-[9px] truncate opacity-70">{t("Sim")}</div>
                       </button>
 
                       <button
@@ -473,16 +474,16 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                         }`}
                       >
                         <div className="font-mono font-bold text-xs">
-                          {match.markets.bothToScore!.no.odds.toFixed(2)}
+                          {t(match.markets.bothToScore!.no.odds.toFixed(2))}
                         </div>
-                        <div className="text-[9px] truncate opacity-70">Não</div>
+                        <div className="text-[9px] truncate opacity-70">{t("Não")}</div>
                       </button>
                     </div>
 
                     <button
                       onClick={() => toggleLiveMatch(match.id)}
                       className="p-2 rounded-lg bg-[#1c1735] text-zinc-400 hover:text-white transition-colors"
-                      title="Mais mercados"
+                      title={t("Mais mercados")}
                     >
                       {isExp ? (
                         <ChevronUp className="w-4 h-4" />
@@ -498,16 +499,16 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                   <div className="pt-3 border-t border-[#231e3f] grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
                     <div className="bg-[#131022] p-2 rounded border border-[#201b38]">
                       <div className="text-zinc-400 text-[10px] mb-1">
-                        Próximo Gol
+                        {t("Próximo Gol")}
                       </div>
                       <div className="flex justify-between font-mono">
-                        <span>{match.homeTeam.slice(0, 3)}: 2.10</span>
-                        <span>Nenhum: 3.20</span>
+                        <span>{t(match.homeTeam.slice(0, 3))}: 2.10</span>
+                        <span>{t("Nenhum: 3.20")}</span>
                       </div>
                     </div>
                     <div className="bg-[#131022] p-2 rounded border border-[#201b38]">
                       <div className="text-zinc-400 text-[10px] mb-1">
-                        Total de Escanteios
+                        {t("Total de Escanteios")}
                       </div>
                       <div className="flex justify-between font-mono">
                         <span>+8.5: 1.85</span>
@@ -516,7 +517,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                     </div>
                     <div className="bg-[#131022] p-2 rounded border border-[#201b38]">
                       <div className="text-zinc-400 text-[10px] mb-1">
-                        Total de Cartões
+                        {t("Total de Cartões")}
                       </div>
                       <div className="flex justify-between font-mono">
                         <span>+3.5: 1.70</span>
@@ -525,7 +526,7 @@ export const MatchesList: React.FC<MatchesListProps> = ({
                     </div>
                     <div className="bg-[#131022] p-2 rounded border border-[#201b38]">
                       <div className="text-zinc-400 text-[10px] mb-1">
-                        Handicap Asiático
+                        {t("Handicap Asiático")}
                       </div>
                       <div className="flex justify-between font-mono">
                         <span>-1.5: 2.40</span>

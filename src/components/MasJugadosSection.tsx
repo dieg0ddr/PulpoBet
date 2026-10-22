@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Crown } from 'lucide-react';
+import { t } from '../i18n';
 
 interface Game {
   id: number;
@@ -30,7 +31,7 @@ export default function MasJugadosSection({ title, games, onPlayGame }: MasJugad
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <h2 className="text-white font-bold tracking-wider flex items-center gap-2 text-lg uppercase">
-            {title}
+            {t(title)}
           </h2>
           <div className="flex items-center gap-1 text-gray-400">
             <button 
@@ -48,7 +49,7 @@ export default function MasJugadosSection({ title, games, onPlayGame }: MasJugad
           </div>
         </div>
         <button className="flex items-center gap-1 bg-transparent border border-white text-white hover:bg-white/10 px-4 py-1.5 rounded-full text-xs font-bold transition-all">
-          Ver todos
+          {t("Ver todos")}
         </button>
       </div>
       
@@ -72,9 +73,9 @@ export default function MasJugadosSection({ title, games, onPlayGame }: MasJugad
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundImage: `url("${game.img}")` }}></div>
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 md:p-3 flex flex-col items-center justify-end z-20 text-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                    <span className="text-white font-bold text-[11px] md:text-[13px] uppercase tracking-tight leading-tight line-clamp-2 drop-shadow-md">{game.title}</span>
+                    <span className="text-white font-bold text-[11px] md:text-[13px] uppercase tracking-tight leading-tight line-clamp-2 drop-shadow-md">{t(game.title)}</span>
                     <span className="text-gray-300 text-[8px] md:text-[9px] uppercase tracking-widest mt-1 flex items-center justify-center gap-1">
-                      {game.provider}
+                      {t(game.provider)}
                     </span>
                   </div>
                 </motion.div>

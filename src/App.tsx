@@ -4,6 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from 'react';
+import { t, setLang, getLang, LANG_BY_SWITCH_CODE, SWITCH_CODE_BY_LANG } from './i18n';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Search,
@@ -82,7 +83,11 @@ export default function App() {
     { code: 'BR', flag: 'https://salsa-tech.com/wp-content/uploads/pulpo/brasil_flag.png' },
     { code: 'EN', flag: 'https://salsa-tech.com/wp-content/uploads/pulpo/Reino_unido.png' }
   ];
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    () => languages.find((l) => l.code === SWITCH_CODE_BY_LANG[getLang()]) ?? languages[0]
+  );
+  // Keep the i18n store in sync with the switch before any child renders.
+  setLang(LANG_BY_SWITCH_CODE[selectedLanguage.code] ?? 'es');
   const verticaisContainerRef = useRef<HTMLDivElement>(null);
   
     
@@ -146,8 +151,8 @@ useEffect(() => {
       <div className="flex items-center gap-3 md:pr-6 border-b md:border-b-0 border-[#2a2745] pb-3 md:pb-0 md:border-r z-10 bg-[#120f21] w-full md:w-auto h-auto md:h-full">
         <Trophy className="text-purple-500" size={24} />
         <div className="flex flex-col">
-          <span className="text-[#a8a8b8] text-xs font-bold uppercase tracking-wider leading-none">ÚLTIMOS</span>
-          <span className="text-white font-black uppercase tracking-wider">GANADORES</span>
+          <span className="text-[#a8a8b8] text-xs font-bold uppercase tracking-wider leading-none">{t("ÚLTIMOS")}</span>
+          <span className="text-white font-black uppercase tracking-wider">{t("GANADORES")}</span>
         </div>
       </div>
       
@@ -170,9 +175,9 @@ useEffect(() => {
               >
                 <img src={winner.img} alt={winner.game} className="w-12 h-12 rounded-lg object-cover border border-[#2a2745]" />
                 <div className="flex flex-col">
-                  <span className="text-xs text-gray-400 font-medium">{winner.user}</span>
-                  <span className="text-[10px] text-gray-500 uppercase tracking-wider truncate w-24">{winner.game}</span>
-                  <span className="text-[#3ee2c6] font-bold text-sm">{winner.amount}</span>
+                  <span className="text-xs text-gray-400 font-medium">{t(winner.user)}</span>
+                  <span className="text-[10px] text-gray-500 uppercase tracking-wider truncate w-24">{t(winner.game)}</span>
+                  <span className="text-[#3ee2c6] font-bold text-sm">{t(winner.amount)}</span>
                 </div>
               </motion.div>
             ))}
@@ -200,11 +205,11 @@ useEffect(() => {
                 <div className="flex items-center gap-3 overflow-hidden">
                   <img src={winner.img} alt={winner.game} className="w-10 h-10 rounded-md object-cover border border-[#2a2745] shrink-0" />
                   <div className="flex flex-col overflow-hidden">
-                    <span className="text-sm text-white font-bold truncate">{winner.user}</span>
-                    <span className="text-[10px] text-gray-400 uppercase tracking-wider truncate max-w-[100px]">{winner.game}</span>
+                    <span className="text-sm text-white font-bold truncate">{t(winner.user)}</span>
+                    <span className="text-[10px] text-gray-400 uppercase tracking-wider truncate max-w-[100px]">{t(winner.game)}</span>
                   </div>
                 </div>
-                <span className="text-[#3ee2c6] font-bold text-xs sm:text-sm whitespace-nowrap">Premio: {winner.amount}</span>
+                <span className="text-[#3ee2c6] font-bold text-xs sm:text-sm whitespace-nowrap">{t("Premio:")} {t(winner.amount)}</span>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -267,7 +272,7 @@ useEffect(() => {
                   onClick={() => setIsLoginModalOpen(true)}
                   className="bg-gradient-to-r from-[#7c3aed] to-[#6d28d9] hover:from-[#8b5cf6] hover:to-[#7c3aed] text-white px-3 sm:px-5 py-1.5 sm:py-2 rounded-xl font-medium text-xs sm:text-sm shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all shrink-0"
                 >
-                  Ingresar
+                  {t("Ingresar")}
                 </button>
               )}
             </div>
@@ -280,13 +285,13 @@ useEffect(() => {
                 <div className="w-6 h-6 rounded-full border border-gray-500 flex items-center justify-center shrink-0">
                   <Wallet size={14} className="text-white" />
                 </div>
-                <span className="text-sm font-bold text-white">{showBalance ? 'ARS$ 1.620,20' : '***'}</span>
+                <span className="text-sm font-bold text-white">{t(showBalance ? 'ARS$ 1.620,20' : '***')}</span>
               </div>
               <div className="flex-1 flex items-center gap-2 bg-[#141226] border border-[#bf87ff]/30 shadow-[0_0_10px_rgba(191,135,255,0.1)] rounded-xl px-3 py-2">
                 <div className="w-6 h-6 rounded-full border border-gray-500 flex items-center justify-center shrink-0">
                   <Gift size={14} className="text-white" />
                 </div>
-                <span className="text-sm font-bold text-white">{showBalance ? 'ARS$ 0,00' : '***'}</span>
+                <span className="text-sm font-bold text-white">{t(showBalance ? 'ARS$ 0,00' : '***')}</span>
               </div>
             </div>
           )}
@@ -294,7 +299,7 @@ useEffect(() => {
               <Search size={16} className="absolute left-3 md:left-3 top-1/2 -translate-y-1/2 text-gray-400" />
               <input 
                 type="text" 
-                placeholder="Buscar juego" 
+                placeholder={t("Buscar juego")} 
                 className="w-full bg-[#141226] md:bg-[#141226] border border-[#2a2745] rounded-full py-2.5 md:py-1.5 pl-10 md:pl-9 pr-4 text-sm text-white placeholder-gray-400 focus:outline-none focus:border-[#5f2eed] transition-colors shadow-inner md:shadow-none"
               />
             </div>
@@ -305,14 +310,14 @@ useEffect(() => {
                     <div className="w-6 h-6 rounded-full border border-gray-500 flex items-center justify-center shrink-0">
                       <Wallet size={16} className="text-white" />
                     </div>
-                    <span className="text-sm font-bold text-white">{showBalance ? 'ARS$ 1.620,20' : '***'}</span>
+                    <span className="text-sm font-bold text-white">{t(showBalance ? 'ARS$ 1.620,20' : '***')}</span>
                   </div>
                   
                   <div className="flex items-center gap-3 bg-[#141226] border border-[#bf87ff]/30 shadow-[0_0_10px_rgba(191,135,255,0.1)] rounded-xl px-3 h-[34px] min-w-[140px]">
                     <div className="w-6 h-6 rounded-full border border-gray-500 flex items-center justify-center shrink-0">
                       <Gift size={16} className="text-white" />
                     </div>
-                    <span className="text-sm font-bold text-white">{showBalance ? 'ARS$ 0,00' : '***'}</span>
+                    <span className="text-sm font-bold text-white">{t(showBalance ? 'ARS$ 0,00' : '***')}</span>
                   </div>
 
                   <button 
@@ -337,7 +342,7 @@ useEffect(() => {
                       <div className="w-6 h-6 rounded-full border border-gray-400 flex items-center justify-center shrink-0">
                         <User size={14} className="text-gray-300" />
                       </div>
-                      <span className="text-sm font-medium">usr00</span>
+                      <span className="text-sm font-medium">{t("usr00")}</span>
                       <ChevronDown size={14} className="text-gray-400" />
                     </div>
 
@@ -352,7 +357,7 @@ useEffect(() => {
                           <div className="flex flex-col">
                             <div className="flex items-center gap-3 px-4 py-3 hover:bg-[#1a1733] cursor-pointer transition-colors border-b border-[#2a2745]">
                               <User size={16} className="text-gray-400" />
-                              <span className="text-white font-medium text-sm">Mi cuenta</span>
+                              <span className="text-white font-medium text-sm">{t("Mi cuenta")}</span>
                             </div>
                             <div 
                               className="flex items-center gap-3 px-4 py-3 hover:bg-[#1a1733] cursor-pointer transition-colors border-b border-[#2a2745]"
@@ -362,7 +367,7 @@ useEffect(() => {
                               }}
                             >
                               <Sliders size={16} className="text-gray-400" />
-                              <span className="text-white font-medium text-sm">Límites por apuestas</span>
+                              <span className="text-white font-medium text-sm">{t("Límites por apuestas")}</span>
                             </div>
                             <div 
                               className="flex items-center gap-3 px-4 py-3 hover:bg-[#1a1733] cursor-pointer transition-colors"
@@ -372,7 +377,7 @@ useEffect(() => {
                               }}
                             >
                               <LogOut size={16} className="text-red-400" />
-                              <span className="text-red-400 font-medium text-sm">Salir</span>
+                              <span className="text-red-400 font-medium text-sm">{t("Salir")}</span>
                             </div>
                           </div>
                         </motion.div>
@@ -385,7 +390,7 @@ useEffect(() => {
                   onClick={() => setIsLoginModalOpen(true)}
                   className="bg-gradient-to-r from-[#6b25e6] to-[#4514a6] hover:from-[#7c37f7] hover:to-[#551fc2] text-white px-6 py-1.5 rounded-full font-bold text-sm shadow-[0_0_15px_rgba(107,37,230,0.5)] transition-all"
                 >
-                  INGRESAR
+                  {t("INGRESAR")}
                 </button>
               )}
               <div className="relative hidden md:block border-l border-[#2a2745] pl-4">
@@ -394,7 +399,7 @@ useEffect(() => {
                   onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                 >
                   <img src={selectedLanguage.flag} alt={selectedLanguage.code} className="w-4 h-4 object-contain" referrerPolicy="no-referrer" />
-                  <span className="text-white font-medium text-sm">{selectedLanguage.code}</span>
+                  <span className="text-white font-medium text-sm">{t(selectedLanguage.code)}</span>
                   <ChevronDown size={14} className="text-gray-400" />
                 </div>
                 
@@ -416,7 +421,7 @@ useEffect(() => {
                           }}
                         >
                           <img src={lang.flag} alt={lang.code} className="w-4 h-4 object-contain" referrerPolicy="no-referrer" />
-                          <span className="text-white font-medium text-sm">{lang.code}</span>
+                          <span className="text-white font-medium text-sm">{t(lang.code)}</span>
                         </div>
                       ))}
                     </motion.div>
@@ -462,7 +467,7 @@ useEffect(() => {
                   </div>
                 )}
                 <span className="text-[10px] font-bold text-gray-400 group-hover:text-[#59258D] transition-colors uppercase tracking-wider text-center">
-                  {item.label}
+                  {t(item.label)}
                 </span>
                 <div 
                   className="absolute bottom-0 left-2 right-2 h-[2px] rounded-full bg-[#59258D] opacity-0 group-hover:opacity-100 transition-opacity"
@@ -486,7 +491,7 @@ useEffect(() => {
       <section className="w-full flex flex-col gap-3">
         <h2 className="text-[#a8a8b8] font-bold tracking-wider flex items-center gap-2">
           <div className="w-2 h-2 rotate-45 bg-purple-500"></div>
-          Explorá PulpoBet
+          {t("Explorá PulpoBet")}
         </h2>
         <div className="hidden md:grid grid-cols-2 lg:grid-cols-5 gap-4 h-auto lg:h-[220px]">
           {/* Card Grande */}
@@ -499,13 +504,13 @@ useEffect(() => {
              
              <div className="absolute inset-0 p-5 flex flex-col justify-between z-10 w-2/3">
                 <div>
-                  <h3 className="text-4xl font-black text-white drop-shadow-md mt-2 mb-2 group-hover:scale-105 origin-left transition-transform">SLOTS</h3>
+                  <h3 className="text-4xl font-black text-white drop-shadow-md mt-2 mb-2 group-hover:scale-105 origin-left transition-transform">{t("SLOTS")}</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Los mejores slots<br />con jackpots increíbles
+                    {t("Los mejores slots")}<br />{t("con jackpots increíbles")}
                   </p>
                 </div>
                 <button className="w-fit bg-transparent border border-white/20 hover:border-white/50 hover:bg-white/10 text-white px-5 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all backdrop-blur-sm mt-auto">
-                  EXPLORAR
+                  {t("EXPLORAR")}
                 </button>
              </div>
              
@@ -521,9 +526,9 @@ useEffect(() => {
              <div className="absolute inset-0 bg-cover bg-center opacity-100 group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/RULETA.png")' }}></div>
              <div className="absolute inset-0 bg-gradient-to-r from-[#10081c]/80 via-transparent to-transparent w-3/4"></div>
              <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
-                <h3 className="text-2xl font-black text-white drop-shadow-md leading-tight mt-2 w-3/4 group-hover:-translate-y-1 transition-transform">CASINO<br />EN VIVO</h3>
+                <h3 className="text-2xl font-black text-white drop-shadow-md leading-tight mt-2 w-3/4 group-hover:-translate-y-1 transition-transform">{t("CASINO")}<br />{t("EN VIVO")}</h3>
                 <button className="w-fit bg-[#5b21b6]/80 hover:bg-[#6d28d9] border border-[#7c3aed]/50 text-white px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all backdrop-blur-sm mt-auto shadow-[0_0_15px_rgba(91,33,182,0.4)]">
-                  JUGAR AHORA
+                  {t("JUGAR AHORA")}
                 </button>
              </div>
           </div>
@@ -533,9 +538,9 @@ useEffect(() => {
              <div className="absolute inset-0 bg-cover bg-right opacity-100 group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/DEPORTES.png")' }}></div>
              <div className="absolute inset-0 bg-gradient-to-r from-[#071115]/80 via-transparent to-transparent w-3/4"></div>
              <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
-                <h3 className="text-2xl font-black text-white drop-shadow-md leading-tight mt-2 group-hover:-translate-y-1 transition-transform">APUESTAS<br />DEPORTIVAS</h3>
+                <h3 className="text-2xl font-black text-white drop-shadow-md leading-tight mt-2 group-hover:-translate-y-1 transition-transform">{t("APUESTAS")}<br />{t("DEPORTIVAS")}</h3>
                 <button className="w-fit bg-[#065f46]/80 hover:bg-[#047857] border border-[#059669]/50 text-white px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition-all backdrop-blur-sm mt-auto shadow-[0_0_15px_rgba(6,95,70,0.4)]">
-                  APOSTAR
+                  {t("APOSTAR")}
                 </button>
              </div>
           </div>
@@ -544,18 +549,18 @@ useEffect(() => {
           <div className="flex flex-col gap-3 h-[220px]">
             <div className="flex-1 relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#130f25] group cursor-pointer p-4 flex items-center justify-between">
               <div className="absolute inset-0 bg-cover bg-center opacity-100 group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/hipicas.png")' }}></div>
-              <h4 className="font-bold text-white tracking-wide z-10 drop-shadow-md">HÍPICAS</h4>
+              <h4 className="font-bold text-white tracking-wide z-10 drop-shadow-md">{t("HÍPICAS")}</h4>
             </div>
             <div className="flex-1 flex gap-3">
                <div className="flex-1 relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#160d1f] group cursor-pointer p-3 flex flex-col justify-end">
                  <div className="absolute inset-0 bg-cover bg-center opacity-100 group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/bingo.png")' }}></div>
                  <div className="absolute inset-0 bg-gradient-to-t from-[#160d1f]/90 via-[#160d1f]/40 to-transparent"></div>
-                 <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">BINGO</h4>
+                 <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">{t("BINGO")}</h4>
                </div>
                <div className="flex-1 relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#0d122b] group cursor-pointer p-3 flex flex-col justify-end border-b-2 border-b-purple-500">
                  <div className="absolute inset-0 bg-cover bg-center opacity-100 group-hover:scale-105 transition-transform duration-500" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/crash_spaceman.png")' }}></div>
                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d122b]/90 via-[#0d122b]/40 to-transparent"></div>
-                 <h4 className="font-bold text-white text-sm z-10 leading-tight drop-shadow-md">CRASH<br/>GAMES</h4>
+                 <h4 className="font-bold text-white text-sm z-10 leading-tight drop-shadow-md">{t("CRASH")}<br/>{t("GAMES")}</h4>
                </div>
             </div>
           </div>
@@ -566,37 +571,37 @@ useEffect(() => {
           <div onClick={() => setCurrentPage('slots')} className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#0d0a1b] group cursor-pointer h-24 flex flex-col justify-end p-3">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/SLOTS_.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1b]/90 via-[#0d0a1b]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">SLOTS</h4>
+            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">{t("SLOTS")}</h4>
           </div>
 
           <div onClick={() => setCurrentPage('casino-en-vivo')} className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#10081c] group cursor-pointer h-24 flex flex-col justify-end p-3">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/RULETA.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#10081c]/90 via-[#10081c]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">CASINO<br/>EN VIVO</h4>
+            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">{t("CASINO")}<br/>{t("EN VIVO")}</h4>
           </div>
 
           <div className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#071115] group cursor-pointer h-24 flex flex-col justify-end p-3">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/DEPORTES.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#071115]/90 via-[#071115]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md leading-tight">APUESTAS<br/>DEPORTIVAS</h4>
+            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md leading-tight">{t("APUESTAS")}<br/>{t("DEPORTIVAS")}</h4>
           </div>
 
           <div className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#130f25] group cursor-pointer h-24 flex flex-col justify-end p-3">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/hipicas.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#130f25]/90 via-[#130f25]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">HÍPICAS</h4>
+            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">{t("HÍPICAS")}</h4>
           </div>
 
           <div className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#160d1f] group cursor-pointer h-24 flex flex-col justify-end p-3">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/bingo.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#160d1f]/90 via-[#160d1f]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">BINGO</h4>
+            <h4 className="font-bold text-white text-sm z-10 drop-shadow-md">{t("BINGO")}</h4>
           </div>
 
           <div className="relative rounded-xl border border-[#2a2745] overflow-hidden bg-[#0d122b] group cursor-pointer h-24 flex flex-col justify-end p-3 border-b-2 border-b-purple-500">
             <div className="absolute inset-0 bg-cover bg-center opacity-100" style={{ backgroundImage: 'url("https://salsa-tech.com/wp-content/uploads/pulpo/crash_spaceman.png")' }}></div>
             <div className="absolute inset-0 bg-gradient-to-t from-[#0d122b]/90 via-[#0d122b]/40 to-transparent"></div>
-            <h4 className="font-bold text-white text-sm z-10 leading-tight drop-shadow-md">CRASH<br/>GAMES</h4>
+            <h4 className="font-bold text-white text-sm z-10 leading-tight drop-shadow-md">{t("CRASH")}<br/>{t("GAMES")}</h4>
           </div>
         </div>
       </section>
@@ -605,13 +610,13 @@ useEffect(() => {
       {/* Recomendados Sections */}
       {currentPage === 'home' && (
         <>
-          <RecomendadosCarousel title="Recomendados para vos" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
-          <RecomendadosCarousel title="Pragmatic play" onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
+          <RecomendadosCarousel title={t("Recomendados para vos")} onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
+          <RecomendadosCarousel title={t("Pragmatic play")} onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
         </>
       )}
 
       {/* Ultimos Ganhadores */}
-      {currentPage === 'home' && renderUltimosGanhadores()}
+      {t(currentPage === 'home' && renderUltimosGanhadores())}
         </>
       ) : currentPage === 'casino-en-vivo' ? (
         <CasinoEnVivoPage />
@@ -645,37 +650,37 @@ useEffect(() => {
       <footer className="w-full mt-12 border-t border-[#1c1936] pt-10 pb-6 flex flex-col gap-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
           <div className="flex flex-col gap-3">
-            <h4 className="text-white font-bold mb-2">Sobre nosotros</h4>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Quiénes somos</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Política de Seguridad y Privacidad</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Reglamento</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Reglamento para Promociones</a>
+            <h4 className="text-white font-bold mb-2">{t("Sobre nosotros")}</h4>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Quiénes somos")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Política de Seguridad y Privacidad")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Reglamento")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Reglamento para Promociones")}</a>
           </div>
           <div className="flex flex-col gap-3">
-            <h4 className="text-white font-bold mb-2">Experiencia</h4>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Testimonios</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Casino</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Slots</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Bingo</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Deportes Virtuales</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Apuestas Deportivas</a>
+            <h4 className="text-white font-bold mb-2">{t("Experiencia")}</h4>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Testimonios")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Casino")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Slots")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Bingo")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Deportes Virtuales")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Apuestas Deportivas")}</a>
           </div>
           <div className="flex flex-col gap-3">
-            <h4 className="text-white font-bold mb-2">Ayuda</h4>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Preguntas frecuentes</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Juego Responsable</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Contacto</a>
-            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">Política de Cookies</a>
+            <h4 className="text-white font-bold mb-2">{t("Ayuda")}</h4>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Preguntas frecuentes")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Juego Responsable")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Contacto")}</a>
+            <a href="#" className="text-gray-400 text-sm hover:text-white transition-colors">{t("Política de Cookies")}</a>
           </div>
           <div className="flex flex-col gap-4">
-            <h4 className="text-white font-bold mb-1">Idioma</h4>
+            <h4 className="text-white font-bold mb-1">{t("Idioma")}</h4>
             <div className="relative">
               <div 
                 className="flex items-center gap-2 bg-[#141226] px-4 py-2 w-fit rounded-lg border border-[#2a2745] cursor-pointer hover:bg-[#1a1733] transition-colors"
                 onClick={() => setIsFooterLanguageMenuOpen(!isFooterLanguageMenuOpen)}
               >
                 <img src={selectedLanguage.flag} alt={selectedLanguage.code} className="w-4 h-4 object-contain" referrerPolicy="no-referrer" />
-                <span className="text-white font-bold text-sm">{selectedLanguage.code}</span>
+                <span className="text-white font-bold text-sm">{t(selectedLanguage.code)}</span>
                 <ChevronDown size={16} className="text-gray-400" />
               </div>
               
@@ -697,14 +702,14 @@ useEffect(() => {
                         }}
                       >
                         <img src={lang.flag} alt={lang.code} className="w-4 h-4 object-contain" referrerPolicy="no-referrer" />
-                        <span className="text-white font-medium text-sm">{lang.code}</span>
+                        <span className="text-white font-medium text-sm">{t(lang.code)}</span>
                       </div>
                     ))}
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-            <h4 className="text-white font-bold mt-2">¡Síguenos!</h4>
+            <h4 className="text-white font-bold mt-2">{t("¡Síguenos!")}</h4>
             <div className="flex gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 via-pink-500 to-orange-500 flex items-center justify-center cursor-pointer hover:opacity-90 transition-opacity">
                 <Instagram size={20} className="text-white" />
@@ -723,27 +728,27 @@ useEffect(() => {
           <div className="flex items-center gap-6">
             <span className="font-bold text-gray-400">18+</span>
             <span>|</span>
-            <span className="font-bold uppercase tracking-wider">JUGÁ RESPONSABLEMENTE</span>
+            <span className="font-bold uppercase tracking-wider">{t("JUGÁ RESPONSABLEMENTE")}</span>
           </div>
           <div className="flex items-center gap-8">
             <div className="flex items-center gap-2">
               <ShieldCheck size={20} className="text-gray-400" />
               <div className="flex flex-col">
-                <span className="font-bold text-gray-400">CONEXIÓN SEGURA</span>
-                <span>SSL 256-BIT</span>
+                <span className="font-bold text-gray-400">{t("CONEXIÓN SEGURA")}</span>
+                <span>{t("SSL 256-BIT")}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Award size={20} className="text-gray-400" />
               <div className="flex flex-col">
-                <span className="font-bold text-gray-400">LICENCIA</span>
-                <span>N° 8048/JAZ</span>
+                <span className="font-bold text-gray-400">{t("LICENCIA")}</span>
+                <span>{t("N° 8048/JAZ")}</span>
               </div>
             </div>
           </div>
           <div className="text-right">
-            <p>Copyright © 2026 PulpoBet.</p>
-            <p>Todos los derechos reservados.</p>
+            <p>{t("Copyright © 2026 PulpoBet.")}</p>
+            <p>{t("Todos los derechos reservados.")}</p>
           </div>
         </div>
       </footer>
@@ -766,28 +771,28 @@ useEffect(() => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-5 px-1">
-                <h3 className="text-white font-bold text-[15px] tracking-wide">Límites por apuesta</h3>
+                <h3 className="text-white font-bold text-[15px] tracking-wide">{t("Límites por apuesta")}</h3>
                 <button onClick={() => setIsLimitsModalOpen(false)} className="text-gray-400 hover:text-white transition-colors">
                   <X size={18} />
                 </button>
               </div>
               
               <div className="flex flex-col gap-3.5 text-[14px] font-bold px-1 pb-1">
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">General:</span> <span className="text-[#ffcca5]">ARS$ 500.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Casino:</span> <span className="text-[#ffcca5]">ARS$ 500.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Bingo:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Instant Games:</span> <span className="text-[#ffcca5]">ARS$ 500.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Deportes:</span> <span className="text-[#ffcca5]">ARS$ 500.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Slots:</span> <span className="text-[#ffcca5]">ARS$ 25.000,00</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("General:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 500.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Casino:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 500.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Bingo:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Instant Games:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 500.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Deportes:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 500.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Slots:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 25.000,00")}</span></div>
                 
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Poker:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Poker:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
                 
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Video Bingo:</span> <span className="text-[#ffcca5]">ARS$ 5.000,00</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Video Bingo:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 5.000,00")}</span></div>
                 
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Mini Slots:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Lotto:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Raspaditas:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
-                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">Caballos:</span> <span className="text-[#ffcca5]">ARS$ 100.000,00</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Mini Slots:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Lotto:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Raspaditas:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
+                <div className="flex gap-1.5"><span className="text-[#cbd5e1]">{t("Caballos:")}</span> <span className="text-[#ffcca5]">{t("ARS$ 100.000,00")}</span></div>
               </div>
             </motion.div>
           </motion.div>
@@ -820,10 +825,10 @@ useEffect(() => {
                 </button>
                 
                 <h2 className="text-white font-bold text-sm text-center mt-5 tracking-wide">
-                  RESTABLECER CONTRASEÑA
+                  {t("RESTABLECER CONTRASEÑA")}
                 </h2>
                 <p className="text-gray-300 text-[13px] text-center mt-3 leading-snug">
-                  Para recuperar tu contraseña,<br/>comunicate con tu agente.
+                  {t("Para recuperar tu contraseña,")}<br/>{t("comunicate con tu agente.")}
                 </p>
 
                 <img 
@@ -836,14 +841,14 @@ useEffect(() => {
                   onClick={() => setIsForgotPasswordModalOpen(false)}
                   className="w-full bg-[#5b21b6] hover:bg-[#6d28d9] text-white py-2.5 rounded-xl font-bold text-xs tracking-wider mt-4 shadow-[0_0_15px_rgba(91,33,182,0.5)] transition-all"
                 >
-                  VOLVER
+                  {t("VOLVER")}
                 </button>
 
                 <div className="flex items-center gap-3 mt-6 w-full px-4">
                   <div className="h-[1px] flex-1 bg-[#2a2745]"></div>
                   <div className="flex items-center gap-1.5 text-gray-400 text-xs">
                     <Lock size={12} />
-                    <span>Conexión segura</span>
+                    <span>{t("Conexión segura")}</span>
                   </div>
                   <div className="h-[1px] flex-1 bg-[#2a2745]"></div>
                 </div>
@@ -851,7 +856,7 @@ useEffect(() => {
                 <div className="flex items-center justify-center gap-3 mt-5 text-gray-500 text-[10px] tracking-wider mb-2">
                   <span>18+</span>
                   <div className="w-[1px] h-3 bg-[#2a2745]"></div>
-                  <span>JUGÁ RESPONSABLEMENTE</span>
+                  <span>{t("JUGÁ RESPONSABLEMENTE")}</span>
                 </div>
               </div>
             </motion.div>
@@ -888,25 +893,25 @@ useEffect(() => {
 
               {/* Form Content */}
               <div className="relative z-10 w-full flex flex-col items-center">
-                <h2 className="text-[19px] md:text-[2.6vh] font-black tracking-tight text-white mb-1 md:mb-[0.6vh] leading-none">INGRESAR</h2>
-                <p className="text-[10px] md:text-[1.4vh] text-gray-300 mb-4 md:mb-[1.8vh]">Accedé a tu cuenta</p>
+                <h2 className="text-[19px] md:text-[2.6vh] font-black tracking-tight text-white mb-1 md:mb-[0.6vh] leading-none">{t("INGRESAR")}</h2>
+                <p className="text-[10px] md:text-[1.4vh] text-gray-300 mb-4 md:mb-[1.8vh]">{t("Accedé a tu cuenta")}</p>
 
                 <div className="w-full flex flex-col gap-2 md:gap-[1.8vh]">
                   <div className="flex flex-col gap-1 md:gap-[0.6vh]">
-                    <label className="text-white text-[10px] md:text-[1.3vh] font-medium pl-1 md:pl-[0.6vh]">Usuario</label>
+                    <label className="text-white text-[10px] md:text-[1.3vh] font-medium pl-1 md:pl-[0.6vh]">{t("Usuario")}</label>
                     <input 
                       type="text"
-                      placeholder="Ingresá tu usuario"
+                      placeholder={t("Ingresá tu usuario")}
                       className="w-full bg-transparent border border-[#2a2745] rounded-xl md:rounded-[1.2vh] px-2.5 md:px-[1.4vh] py-2 md:py-[1.2vh] text-[10px] md:text-[1.3vh] text-white placeholder-gray-500 focus:outline-none focus:border-[#5f2eed] transition-colors"
                     />
                   </div>
 
                   <div className="flex flex-col gap-1 md:gap-[0.6vh] relative">
-                    <label className="text-white text-[10px] md:text-[1.3vh] font-medium pl-1 md:pl-[0.6vh]">Contraseña</label>
+                    <label className="text-white text-[10px] md:text-[1.3vh] font-medium pl-1 md:pl-[0.6vh]">{t("Contraseña")}</label>
                     <div className="relative">
                       <input 
                         type="password"
-                        placeholder="Ingresá tu contraseña"
+                        placeholder={t("Ingresá tu contraseña")}
                         className="w-full bg-transparent border border-[#2a2745] rounded-xl md:rounded-[1.2vh] pl-2.5 md:pl-[1.4vh] pr-8 md:pr-[3.6vh] py-2 md:py-[1.2vh] text-[10px] md:text-[1.3vh] text-white placeholder-gray-500 focus:outline-none focus:border-[#5f2eed] transition-colors"
                       />
                       <button className="absolute right-2.5 md:right-[1.2vh] top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors">
@@ -922,7 +927,7 @@ useEffect(() => {
                     }}
                     className="w-full bg-[#5f2eed] hover:bg-[#6e3df0] text-white rounded-xl md:rounded-[1.2vh] py-2 md:py-[1.4vh] font-bold mt-1.5 md:mt-[1.2vh] shadow-[0_0_15px_rgba(95,46,237,0.4)] transition-all text-xs md:text-[1.4vh]"
                   >
-                    INGRESAR
+                    {t("INGRESAR")}
                   </button>
                 </div>
 
@@ -935,14 +940,14 @@ useEffect(() => {
                     setIsForgotPasswordModalOpen(true);
                   }}
                 >
-                  ¿Olvidaste tu contraseña?
+                  {t("¿Olvidaste tu contraseña?")}
                 </a>
 
                 <div className="w-full flex items-center gap-3 md:gap-[1.2vh] mt-4 md:mt-[2.4vh]">
                   <div className="h-[1px] md:h-[0.1vh] flex-1 bg-gradient-to-r from-transparent to-gray-700/50"></div>
                   <div className="flex items-center gap-2 md:gap-[0.6vh] text-gray-400 text-[10px] md:text-[1.2vh]">
                     <Lock size={10} className="w-[10px] h-[10px] md:w-[1.2vh] md:h-[1.2vh]" />
-                    <span>Conexión segura</span>
+                    <span>{t("Conexión segura")}</span>
                   </div>
                   <div className="h-[1px] md:h-[0.1vh] flex-1 bg-gradient-to-l from-transparent to-gray-700/50"></div>
                 </div>
@@ -950,7 +955,7 @@ useEffect(() => {
                 <div className="flex items-center gap-2 md:gap-[1.2vh] mt-4 md:mt-[2.4vh] text-[8px] md:text-[1.1vh] text-gray-500">
                   <span>18+</span>
                   <div className="w-[1px] md:w-[0.1vh] h-2.5 md:h-[1.2vh] bg-gray-700"></div>
-                  <span className="uppercase tracking-wider">JUGÁ RESPONSABLEMENTE</span>
+                  <span className="uppercase tracking-wider">{t("JUGÁ RESPONSABLEMENTE")}</span>
                 </div>
               </div>
             </motion.div>
@@ -976,7 +981,7 @@ useEffect(() => {
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">
-                <h2 className="text-white text-xl font-medium">Buscar juegos</h2>
+                <h2 className="text-white text-xl font-medium">{t("Buscar juegos")}</h2>
                 <button 
                   onClick={() => setIsSearchModalOpen(false)}
                   className="text-gray-400 hover:text-white transition-colors"
@@ -989,18 +994,18 @@ useEffect(() => {
                 <Search size={20} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" strokeWidth={1.5} />
                 <input 
                   type="text" 
-                  placeholder="Nombre del juego o proveedor"
+                  placeholder={t("Nombre del juego o proveedor")}
                   className="w-full bg-[#141226] border border-[#2a2745] rounded-xl py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-[#5f2eed] transition-colors"
                   autoFocus
                 />
               </div>
 
               <div className="flex flex-col gap-3">
-                <h3 className="text-gray-300 text-sm font-medium mb-1">Búsquedas recientes</h3>
+                <h3 className="text-gray-300 text-sm font-medium mb-1">{t("Búsquedas recientes")}</h3>
                 <div className="flex flex-wrap gap-3">
                   {['Sugar Rush 1000', 'Gates of Olympus 1000', 'Sweet Bonanza 1000', 'Wanted Dead or a Wild', 'Roulette'].map((term, i) => (
                     <div key={i} className="flex items-center gap-3 bg-[#141226] border border-[#2a2745] hover:border-[#3a3755] rounded-xl px-4 py-2 cursor-pointer transition-colors group">
-                      <span className="text-gray-200 text-sm">{term}</span>
+                      <span className="text-gray-200 text-sm">{t(term)}</span>
                       <X size={14} className="text-gray-500 group-hover:text-gray-300" />
                     </div>
                   ))}
@@ -1030,7 +1035,7 @@ useEffect(() => {
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
-          <span className="text-[10px] font-medium">Menú</span>
+          <span className="text-[10px] font-medium">{t("Menú")}</span>
         </div>
         
         <div 
@@ -1047,7 +1052,7 @@ useEffect(() => {
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
-          <span className="text-[10px] font-medium">Deportes</span>
+          <span className="text-[10px] font-medium">{t("Deportes")}</span>
         </div>
         
         <div className="flex flex-col items-center justify-center relative cursor-pointer flex-1 h-12" onClick={() => currentPage === 'deportes' ? null : setCurrentPage('home')}>
@@ -1085,7 +1090,7 @@ useEffect(() => {
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
-          <span className="text-[10px] font-medium">Slots</span>
+          <span className="text-[10px] font-medium">{t("Slots")}</span>
         </div>
         <div className={`flex flex-col items-center gap-1 cursor-pointer flex-1 py-2 transition-colors ${currentPage === 'casino-en-vivo' ? 'text-[#8f4bff]' : 'text-[#a8a8b8] hover:text-white'}`} onClick={() => setCurrentPage('casino-en-vivo')}>
           <img 
@@ -1098,7 +1103,7 @@ useEffect(() => {
                 : 'brightness(0) saturate(100%) invert(74%) sepia(8%) saturate(355%) hue-rotate(202deg) brightness(93%) contrast(88%)' 
             }}
           />
-          <span className="text-[10px] font-medium">Casino</span>
+          <span className="text-[10px] font-medium">{t("Casino")}</span>
         </div>
       </div>
     </div>

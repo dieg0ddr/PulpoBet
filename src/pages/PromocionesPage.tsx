@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Trophy, Gift, Ticket, Calendar, ChevronDown, Crown, Goal } from 'lucide-react';
 import BannerCarousel from '../components/BannerCarousel';
 import { promotionsData } from '../data/promotions';
+import { t } from '../i18n';
 
 export default function PromocionesPage() {
   const [activeFilter, setActiveFilter] = useState('todas');
@@ -32,7 +33,7 @@ export default function PromocionesPage() {
           className="flex items-center gap-2 text-gray-400 hover:text-white w-fit transition-colors"
         >
           <ChevronLeft size={20} />
-          <span className="font-bold text-sm uppercase tracking-wider">Volver a Promociones</span>
+          <span className="font-bold text-sm uppercase tracking-wider">{t("Volver a Promociones")}</span>
         </button>
 
         {/* Detail Banner */}
@@ -48,11 +49,11 @@ export default function PromocionesPage() {
           </button>
 
           <div className="z-10 flex flex-col items-center justify-center text-center gap-2 pointer-events-none w-full max-w-2xl mx-auto">
-            <span className={`px-3 py-1 rounded-sm text-white text-xs font-black uppercase tracking-wider shadow-md ${promo.tagColor}`}>{promo.tag}</span>
-            <h1 className={promo.titleClasses}>{promo.title}</h1>
-            {promo.subtitle && <h2 className={promo.subtitleClasses}>{promo.subtitle}</h2>}
+            <span className={`px-3 py-1 rounded-sm text-white text-xs font-black uppercase tracking-wider shadow-md ${promo.tagColor}`}>{t(promo.tag)}</span>
+            <h1 className={promo.titleClasses}>{t(promo.title)}</h1>
+            {promo.subtitle && <h2 className={promo.subtitleClasses}>{t(promo.subtitle)}</h2>}
             <div className="flex items-center gap-1.5 text-sm text-gray-300 mt-2 font-medium bg-black/40 px-4 py-1.5 rounded-full backdrop-blur-sm border border-white/10">
-              <Calendar size={14} /> {promo.validUntil === 'Todos los lunes' ? promo.validUntil : `Válida hasta ${promo.validUntil}`}
+              <Calendar size={14} /> {t(promo.validUntil === 'Todos los lunes' ? promo.validUntil : `${t('Válida hasta')} ${promo.validUntil}`)}
             </div>
           </div>
 
@@ -66,7 +67,7 @@ export default function PromocionesPage() {
 
         <div className="flex justify-center w-full mt-2">
            <button className="bg-[#5b21b6] hover:bg-[#6d28d9] text-white px-12 py-3 rounded-lg font-bold text-sm transition-colors w-full md:w-auto shadow-[0_0_15px_rgba(91,33,182,0.4)]">
-              PARTICIPAR AHORA
+              {t("PARTICIPAR AHORA")}
            </button>
         </div>
 
@@ -75,16 +76,16 @@ export default function PromocionesPage() {
           <div className="flex flex-col gap-2">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
               <div className="w-2 h-2 rotate-45 bg-purple-500"></div>
-              Reglamento de la promoción
+              {t("Reglamento de la promoción")}
             </h3>
-            <p className="text-gray-300 font-medium text-lg mt-2">{promo.description}</p>
+            <p className="text-gray-300 font-medium text-lg mt-2">{t(promo.description)}</p>
           </div>
           
           <ul className="flex flex-col gap-3">
             {promo.rules.map((rule, idx) => (
               <li key={idx} className="flex items-start gap-3 text-sm text-gray-400">
                 <div className="w-1.5 h-1.5 rounded-full bg-purple-500 mt-1.5 shrink-0 shadow-[0_0_8px_rgba(168,85,247,0.5)]"></div>
-                <span className="leading-relaxed">{rule}</span>
+                <span className="leading-relaxed">{t(rule)}</span>
               </li>
             ))}
           </ul>
@@ -98,9 +99,9 @@ export default function PromocionesPage() {
       <div className="flex flex-col gap-1 w-full mb-2 mt-4">
         <h1 className="text-2xl md:text-3xl font-black text-white flex items-center gap-2">
           <div className="w-3 h-3 rotate-45 bg-purple-500"></div>
-          Promociones
+          {t("Promociones")}
         </h1>
-        <p className="text-gray-400 text-sm tracking-wider">Beneficios y experiencias pensadas para vos</p>
+        <p className="text-gray-400 text-sm tracking-wider">{t("Beneficios y experiencias pensadas para vos")}</p>
       </div>
 
       <section className="flex flex-col lg:flex-row gap-4 w-full lg:h-[320px]">
@@ -109,15 +110,15 @@ export default function PromocionesPage() {
         
         {/* Beneficios Destacados Container */}
         <div className="flex-[1.5] bg-[#100d20] border border-[#2a2745] rounded-xl p-5 flex flex-col gap-4 shadow-lg">
-          <h3 className="font-bold text-white text-base tracking-wider mb-2">Beneficios destacados</h3>
+          <h3 className="font-bold text-white text-base tracking-wider mb-2">{t("Beneficios destacados")}</h3>
           <div className="flex flex-col gap-4">
             <div className="flex items-start gap-4 group cursor-pointer">
               <div className="w-12 h-12 rounded-lg bg-[#181530] border border-[#2a2745] flex items-center justify-center group-hover:border-purple-500/50 transition-colors shrink-0">
                 <Ticket size={24} className="text-purple-400 group-hover:scale-110 transition-transform" />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">Free Bet</span>
-                <span className="text-xs text-gray-500 leading-tight">Jugá sin riesgo con nuestras free bets exclusivas.</span>
+                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">{t("Free Bet")}</span>
+                <span className="text-xs text-gray-500 leading-tight">{t("Jugá sin riesgo con nuestras free bets exclusivas.")}</span>
               </div>
             </div>
             <div className="flex items-start gap-4 group cursor-pointer">
@@ -125,8 +126,8 @@ export default function PromocionesPage() {
                 <Trophy size={24} className="text-yellow-500 group-hover:scale-110 transition-transform" />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">Torneos semanales</span>
-                <span className="text-xs text-gray-500 leading-tight">Competí y ganá increíbles premios cada semana.</span>
+                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">{t("Torneos semanales")}</span>
+                <span className="text-xs text-gray-500 leading-tight">{t("Competí y ganá increíbles premios cada semana.")}</span>
               </div>
             </div>
             <div className="flex items-start gap-4 group cursor-pointer">
@@ -134,8 +135,8 @@ export default function PromocionesPage() {
                 <Gift size={24} className="text-pink-500 group-hover:scale-110 transition-transform" />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">Premios exclusivos</span>
-                <span className="text-xs text-gray-500 leading-tight">Accedé a sorteos y recompensas sólo por jugar.</span>
+                <span className="font-bold text-sm text-gray-200 group-hover:text-white transition-colors">{t("Premios exclusivos")}</span>
+                <span className="text-xs text-gray-500 leading-tight">{t("Accedé a sorteos y recompensas sólo por jugar.")}</span>
               </div>
             </div>
           </div>
@@ -149,31 +150,31 @@ export default function PromocionesPage() {
             className={`px-6 py-2 rounded-lg font-bold text-sm transition-all whitespace-nowrap ${activeFilter === 'todas' ? 'bg-[#5b21b6] text-white border border-[#7c3aed]' : 'bg-[#141226] text-gray-400 border border-[#2a2745] hover:bg-[#1a1733] hover:text-white'}`}
             onClick={() => setActiveFilter('todas')}
           >
-            Todas
+            {t("Todas")}
           </button>
           <button 
             className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-sm transition-all whitespace-nowrap ${activeFilter === 'casino' ? 'bg-[#5b21b6] text-white border border-[#7c3aed]' : 'bg-[#141226] text-gray-400 border border-[#2a2745] hover:bg-[#1a1733] hover:text-white'}`}
             onClick={() => setActiveFilter('casino')}
           >
-            <Crown size={16} className={activeFilter === 'casino' ? 'text-white' : 'text-purple-400'} /> Casino
+            <Crown size={16} className={activeFilter === 'casino' ? 'text-white' : 'text-purple-400'} /> {t("Casino")}
           </button>
           <button 
             className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-sm transition-all whitespace-nowrap ${activeFilter === 'deportes' ? 'bg-[#5b21b6] text-white border border-[#7c3aed]' : 'bg-[#141226] text-gray-400 border border-[#2a2745] hover:bg-[#1a1733] hover:text-white'}`}
             onClick={() => setActiveFilter('deportes')}
           >
-            <Goal size={16} className={activeFilter === 'deportes' ? 'text-white' : 'text-gray-300'} /> Deportes
+            <Goal size={16} className={activeFilter === 'deportes' ? 'text-white' : 'text-gray-300'} /> {t("Deportes")}
           </button>
           <button 
             className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-sm transition-all whitespace-nowrap ${activeFilter === 'torneos' ? 'bg-[#5b21b6] text-white border border-[#7c3aed]' : 'bg-[#141226] text-gray-400 border border-[#2a2745] hover:bg-[#1a1733] hover:text-white'}`}
             onClick={() => setActiveFilter('torneos')}
           >
-            <Trophy size={16} className={activeFilter === 'torneos' ? 'text-white' : 'text-yellow-500'} /> Torneos
+            <Trophy size={16} className={activeFilter === 'torneos' ? 'text-white' : 'text-yellow-500'} /> {t("Torneos")}
           </button>
           <button 
             className={`flex items-center gap-2 px-6 py-2 rounded-lg font-bold text-sm transition-all whitespace-nowrap ${activeFilter === 'bonos' ? 'bg-[#5b21b6] text-white border border-[#7c3aed]' : 'bg-[#141226] text-gray-400 border border-[#2a2745] hover:bg-[#1a1733] hover:text-white'}`}
             onClick={() => setActiveFilter('bonos')}
           >
-            <Gift size={16} className={activeFilter === 'bonos' ? 'text-white' : 'text-pink-400'} /> Bonos
+            <Gift size={16} className={activeFilter === 'bonos' ? 'text-white' : 'text-pink-400'} /> {t("Bonos")}
           </button>
         </div>
         
@@ -181,7 +182,7 @@ export default function PromocionesPage() {
 
       {/* Promociones Activas */}
       <section className="w-full flex flex-col gap-3">
-        <h2 className="text-white font-bold text-lg">Promociones activas</h2>
+        <h2 className="text-white font-bold text-lg">{t("Promociones activas")}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           
           {promotionsData.map((promo, idx) => (
@@ -191,7 +192,7 @@ export default function PromocionesPage() {
               className={`group relative rounded-xl border border-[#2a2745] overflow-hidden ${promo.bgClass} flex flex-col cursor-pointer transition-transform hover:scale-[1.02]`}
             >
               <div className={`absolute top-3 left-3 ${promo.tagColor} text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md`}>
-                {promo.tag}
+                {t(promo.tag)}
               </div>
               <div className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity" style={{ backgroundImage: `url('${promo.image}')` }}></div>
               <div className={`absolute inset-0 bg-gradient-to-t ${promo.gradientFrom} ${promo.gradientVia} to-transparent`}></div>
@@ -200,24 +201,24 @@ export default function PromocionesPage() {
                 <div className={`flex flex-col justify-center mt-2 ${promo.width}`}>
                   {promo.tag === 'SORTEO' || promo.tag === 'TORNEO' ? (
                      <>
-                        {promo.tag === 'TORNEO' && <span className="text-yellow-400 font-bold tracking-widest text-sm">TORNEO</span>}
-                        <h3 className={promo.titleClasses}>{promo.title}</h3>
-                        <h3 className={promo.subtitleClasses}>{promo.subtitle}</h3>
+                        {promo.tag === 'TORNEO' && <span className="text-yellow-400 font-bold tracking-widest text-sm">{t("TORNEO")}</span>}
+                        <h3 className={promo.titleClasses}>{t(promo.title)}</h3>
+                        <h3 className={promo.subtitleClasses}>{t(promo.subtitle)}</h3>
                      </>
                   ) : (
                      <>
-                        <h3 className={promo.titleClasses}>{promo.title}</h3>
+                        <h3 className={promo.titleClasses}>{t(promo.title)}</h3>
                      </>
                   )}
                 </div>
                 <div className="flex flex-col gap-2 mt-auto">
-                  <p className="text-gray-300 text-xs font-medium">{promo.description}</p>
+                  <p className="text-gray-300 text-xs font-medium">{t(promo.description)}</p>
                   <div className="flex justify-between items-end">
                     <div className="flex items-center gap-1.5 text-[10px] text-gray-400">
-                      <Calendar size={12} /> {promo.validUntil === 'Todos los lunes' ? promo.validUntil : `Válida hasta ${promo.validUntil}`}
+                      <Calendar size={12} /> {t(promo.validUntil === 'Todos los lunes' ? promo.validUntil : `${t('Válida hasta')} ${promo.validUntil}`)}
                     </div>
                     <button className="bg-[#5b21b6] hover:bg-[#6d28d9] text-white px-4 py-1.5 rounded-md font-bold text-xs flex items-center gap-1 transition-colors">
-                      VER MÁS <ChevronRight size={14} />
+                      {t("VER MÁS")} <ChevronRight size={14} />
                     </button>
                   </div>
                 </div>

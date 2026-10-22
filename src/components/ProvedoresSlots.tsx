@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowDownAZ, ArrowDownZA, ChevronDown, ChevronUp } from 'lucide-react';
+import { t } from '../i18n';
 
 const rawProviders = [
   { name: '3Cherry', url: 'https://salsa-tech.com/wp-content/uploads/pulpo/SLOTS/3cherry.png' },
@@ -59,7 +60,7 @@ export default function ProvedoresSlots() {
       >
         <h2 className="text-[#a8a8b8] font-bold tracking-wider flex items-center gap-2">
           <div className="w-2 h-2 rotate-45 bg-purple-500"></div>
-          Slots
+          {t("Slots")}
         </h2>
         
         <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
@@ -68,14 +69,14 @@ export default function ProvedoresSlots() {
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${sortOrder === 'asc' ? 'bg-[#5b21b6] text-white' : 'bg-[#141226] text-gray-400 hover:text-white border border-[#2a2745]'}`}
           >
             <ArrowDownAZ size={14} />
-            <span className="hidden sm:inline">A-Z</span>
+            <span className="hidden sm:inline">{t("A-Z")}</span>
           </button>
           <button
             onClick={() => setSortOrder('desc')}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${sortOrder === 'desc' ? 'bg-[#5b21b6] text-white' : 'bg-[#141226] text-gray-400 hover:text-white border border-[#2a2745]'}`}
           >
             <ArrowDownZA size={14} />
-            <span className="hidden sm:inline">Z-A</span>
+            <span className="hidden sm:inline">{t("Z-A")}</span>
           </button>
           <div className="w-[1px] h-6 bg-[#2a2745] mx-1"></div>
           <button
@@ -115,7 +116,7 @@ export default function ProvedoresSlots() {
               />
             </div>
             <span className="text-[10px] font-bold text-gray-400 group-hover:text-white text-center tracking-wider leading-tight">
-              {provider.name}
+              {t(provider.name)}
             </span>
           </div>
         ))}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight, Star as StarIcon } from 'lucide-react';
+import { t } from '../i18n';
 
 interface GameHorizontal {
   id: number;
@@ -93,7 +94,7 @@ export default function RecomendadosCarousel({ title, onPlayGame, hideVerMas = f
     >
       {game.badge && (
         <div className={`absolute top-2 left-2 ${game.badgeColor} text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md`}>
-          {game.badge}
+          {t(game.badge)}
         </div>
       )}
       <div className="absolute top-2 right-2 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity z-10">
@@ -105,8 +106,8 @@ export default function RecomendadosCarousel({ title, onPlayGame, hideVerMas = f
       ></div>
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
       <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 flex flex-col justify-end translate-y-2 group-hover:translate-y-0">
-        <span className="text-white font-bold text-[13px] leading-tight truncate">{game.title}</span>
-        <span className="text-gray-400 text-[10px]">{game.provider}</span>
+        <span className="text-white font-bold text-[13px] leading-tight truncate">{t(game.title)}</span>
+        <span className="text-gray-400 text-[10px]">{t(game.provider)}</span>
       </div>
     </motion.div>
   );
@@ -116,7 +117,7 @@ export default function RecomendadosCarousel({ title, onPlayGame, hideVerMas = f
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
           <h2 className="text-[#a8a8b8] font-bold tracking-wider flex items-center gap-2">
-            {title}
+            {t(title)}
           </h2>
           <div className="flex items-center gap-1 text-gray-400">
             <button 
@@ -135,7 +136,7 @@ export default function RecomendadosCarousel({ title, onPlayGame, hideVerMas = f
         </div>
         {!hideVerMas && (
           <button className="flex items-center gap-1 bg-[#1a1435] hover:bg-[#231b46] border border-[#30255a] text-[#a8a8b8] hover:text-white px-3 py-1.5 rounded-full text-xs font-bold transition-all">
-            VER MÁS <ChevronRight size={14} />
+            {t("VER MÁS")} <ChevronRight size={14} />
           </button>
         )}
       </div>

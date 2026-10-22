@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Maximize, Monitor, ChevronLeft, ChevronRight, Star as StarIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import RecomendadosCarousel from '../components/RecomendadosCarousel';
+import { t } from '../i18n';
 
 const recomendados = [
   { id: 1, title: 'Mesa en Vivo 1', img: 'https://salsa-tech.com/wp-content/uploads/pulpo/11521.jpg' },
@@ -74,7 +75,7 @@ export default function GamePage({ gameUrl = "https://spp.patagoniaentertainment
         {/* Ultimos Ganadores Sidebar */}
         <div className="flex-[1] bg-[#120f21] border border-[#2a2745] rounded-xl flex flex-col p-5 overflow-hidden shadow-lg min-w-[280px] h-[400px] lg:h-auto">
           <h3 className="text-white font-bold text-lg mb-4 flex items-center gap-2">
-            Últimos ganadores
+            {t("Últimos ganadores")}
           </h3>
           <div className="flex-1 overflow-hidden relative flex flex-col">
             <div className="absolute inset-0 flex flex-col gap-3">
@@ -94,8 +95,8 @@ export default function GamePage({ gameUrl = "https://spp.patagoniaentertainment
                   >
                     <img src={winner.img} alt="Game" className="w-16 h-10 object-cover rounded-md border border-[#2a2745]" />
                     <div className="flex flex-col">
-                      <span className="text-sm text-white font-bold">{winner.user}</span>
-                      <span className="text-xs text-purple-400 font-bold">Premio: {winner.prize}</span>
+                      <span className="text-sm text-white font-bold">{t(winner.user)}</span>
+                      <span className="text-xs text-purple-400 font-bold">{t("Premio:")} {t(winner.prize)}</span>
                     </div>
                   </motion.div>
                 ))}
@@ -106,10 +107,10 @@ export default function GamePage({ gameUrl = "https://spp.patagoniaentertainment
       </div>
 
       <div className="text-gray-300 text-sm md:text-base leading-relaxed max-w-4xl">
-        Prueba nuestra gran selección de Slots, desde juegos de una línea a juegos con 1.024 maneras de ganar. Ciertamente encontrarás un género y estilo de juego a tu medida.
+        {t("Prueba nuestra gran selección de Slots, desde juegos de una línea a juegos con 1.024 maneras de ganar. Ciertamente encontrarás un género y estilo de juego a tu medida.")}
       </div>
 
-      <RecomendadosCarousel title="Recomendados para vos" hideVerMas />
+      <RecomendadosCarousel title={t("Recomendados para vos")} hideVerMas />
     </div>
   );
 }

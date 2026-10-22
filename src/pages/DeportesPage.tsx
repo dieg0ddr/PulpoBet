@@ -2,6 +2,7 @@ import React from 'react';
 import BannerCarousel from '../components/BannerCarousel';
 import MasJugadosSection from '../components/MasJugadosSection';
 import Sportsbook from '../sportsbook/Sportsbook';
+import { t } from '../i18n';
 
 interface DeportesPageProps {
   games: any[];
@@ -25,9 +26,9 @@ export default function DeportesPage({ games, onPlayGame, isLoggedIn, onOpenLogi
 
       {/* Carousels */}
       <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto mt-6">
-        <MasJugadosSection title="MÁS JUGADOS" games={games} onPlayGame={onPlayGame} />
-        <MasJugadosSection title="SLOTS" games={games} onPlayGame={onPlayGame} />
-        <MasJugadosSection title="AO VIVO" games={games} onPlayGame={onPlayGame} />
+        <MasJugadosSection title={t("MÁS JUGADOS")} games={games} onPlayGame={onPlayGame} />
+        <MasJugadosSection title={t("SLOTS")} games={games} onPlayGame={onPlayGame} />
+        <MasJugadosSection title={t("AO VIVO")} games={games} onPlayGame={onPlayGame} />
       </div>
     </div>
   );

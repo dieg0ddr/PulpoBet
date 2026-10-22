@@ -1,5 +1,6 @@
 import React from 'react';
 import { MatchItem, OddSelection } from '../types/sportsbook';
+import { t } from '../../i18n';
 
 interface BasketballRowsProps {
   selectedOdds: OddSelection[];
@@ -104,7 +105,7 @@ export const BasketballRows: React.FC<BasketballRowsProps> = ({
           className={`basketball-row basketball-row--${row.id} space-y-2.5`}
           data-row={row.id}
         >
-          <h2 className="text-sm font-bold tracking-wide text-white">{row.title}</h2>
+          <h2 className="text-sm font-bold tracking-wide text-white">{t(row.title)}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {row.matches.map((item) => {
               const winner = item.markets.winner;
@@ -120,34 +121,34 @@ export const BasketballRows: React.FC<BasketballRowsProps> = ({
                       {item.isLive ? (
                         <>
                           <span className="px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-red-600 text-white">
-                            AO VIVO
+                            {t("AO VIVO")}
                           </span>
-                          <span className="font-mono text-zinc-300">{item.liveTime}</span>
+                          <span className="font-mono text-zinc-300">{t(item.liveTime)}</span>
                         </>
                       ) : (
-                        <span className="font-mono text-zinc-300">{item.time}</span>
+                        <span className="font-mono text-zinc-300">{t(item.time)}</span>
                       )}
                     </div>
-                    <span className="truncate max-w-[120px] text-right">{item.competition}</span>
+                    <span className="truncate max-w-[120px] text-right">{t(item.competition)}</span>
                   </header>
 
                   <div className="space-y-1">
                     <p className="flex items-center justify-between font-semibold text-xs text-white">
-                      <span className="truncate pr-2">{item.homeTeam}</span>
+                      <span className="truncate pr-2">{t(item.homeTeam)}</span>
                       {item.homeScore !== undefined && (
-                        <span className="font-mono font-bold">{item.homeScore}</span>
+                        <span className="font-mono font-bold">{t(item.homeScore)}</span>
                       )}
                     </p>
                     <p className="flex items-center justify-between font-semibold text-xs text-white">
-                      <span className="truncate pr-2">{item.awayTeam}</span>
+                      <span className="truncate pr-2">{t(item.awayTeam)}</span>
                       {item.awayScore !== undefined && (
-                        <span className="font-mono font-bold">{item.awayScore}</span>
+                        <span className="font-mono font-bold">{t(item.awayScore)}</span>
                       )}
                     </p>
                   </div>
 
                   <p className="text-[10px] text-zinc-400">
-                    Vencedor, incluindo prorrogação
+                    {t("Vencedor, incluindo prorrogação")}
                   </p>
 
                   <div className="grid grid-cols-3 gap-1.5">
@@ -230,8 +231,8 @@ function OddButton({
           : 'bg-[#1d1834] hover:bg-[#262044] border border-[#29234a] text-zinc-200'
       }`}
     >
-      <div className="text-[10px] truncate leading-tight opacity-80">{label}</div>
-      <div className="font-mono font-bold text-xs mt-0.5">{odds.toFixed(2)}</div>
+      <div className="text-[10px] truncate leading-tight opacity-80">{t(label)}</div>
+      <div className="font-mono font-bold text-xs mt-0.5">{t(odds.toFixed(2))}</div>
     </button>
   );
 }

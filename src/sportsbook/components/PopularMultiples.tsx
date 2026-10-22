@@ -1,6 +1,7 @@
 import React from 'react';
 import { MatchItem, OddSelection } from '../types/sportsbook';
 import { Plus } from 'lucide-react';
+import { t } from '../../i18n';
 
 interface PopularMultiplesProps {
   items: MatchItem[];
@@ -109,14 +110,14 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
                     : 'bg-[#18152a] text-zinc-300 border border-[#262140] group-hover:border-zinc-500 group-hover:text-white'
                 }`}
               >
-                {sport.icon}
+                {t(sport.icon)}
               </div>
               <span
                 className={`text-[11px] whitespace-nowrap transition-colors ${
                   active ? 'text-white font-bold' : 'text-zinc-400 group-hover:text-zinc-200'
                 }`}
               >
-                {sport.label}
+                {t(sport.label)}
               </span>
             </button>
           );
@@ -126,7 +127,7 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
       {showCards && (
       <div className="space-y-2.5">
         <div className="text-sm font-bold text-white tracking-wide">
-          Múltiplas Populares
+          {t("Múltiplas Populares")}
         </div>
 
         {/* Horizontal grid of 3 cards */}
@@ -146,38 +147,38 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
                     {item.isLive ? (
                       <>
                         <span className="px-1.5 py-0.5 rounded text-[9px] font-extrabold bg-red-600 text-white">
-                          AO VIVO
+                          {t("AO VIVO")}
                         </span>
-                        <span className="font-mono text-zinc-300">{item.liveTime}</span>
+                        <span className="font-mono text-zinc-300">{t(item.liveTime)}</span>
                       </>
                     ) : (
-                      <span className="font-mono text-zinc-300">{item.time}</span>
+                      <span className="font-mono text-zinc-300">{t(item.time)}</span>
                     )}
                   </div>
                   <span className="truncate max-w-[120px] text-zinc-400 text-right">
-                    {item.competition}
+                    {t(item.competition)}
                   </span>
                 </div>
 
                 {/* Teams & Score */}
                 <div className="space-y-1 my-1">
                   <div className="flex items-center justify-between font-semibold text-xs text-white">
-                    <span className="truncate pr-2">{item.homeTeam}</span>
+                    <span className="truncate pr-2">{t(item.homeTeam)}</span>
                     {item.homeScore !== undefined && (
-                      <span className="font-mono font-bold">{item.homeScore}</span>
+                      <span className="font-mono font-bold">{t(item.homeScore)}</span>
                     )}
                   </div>
                   <div className="flex items-center justify-between font-semibold text-xs text-white">
-                    <span className="truncate pr-2">{item.awayTeam}</span>
+                    <span className="truncate pr-2">{t(item.awayTeam)}</span>
                     {item.awayScore !== undefined && (
-                      <span className="font-mono font-bold">{item.awayScore}</span>
+                      <span className="font-mono font-bold">{t(item.awayScore)}</span>
                     )}
                   </div>
                 </div>
 
                 {/* Subtitle */}
                 <div className="text-[10px] text-zinc-400">
-                  Resultado Final {item.isLive ? '(Ao Vivo)' : ''}
+                  {t("Resultado Final")} {t(item.isLive ? '(Ao Vivo)' : '')}
                 </div>
 
                 {/* 3 Odds buttons matching screenshot */}
@@ -200,9 +201,9 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
                         : 'bg-[#1d1834] hover:bg-[#262044] border border-[#29234a] text-zinc-200'
                     }`}
                   >
-                    <div className="text-[10px] truncate leading-tight opacity-80">{item.homeTeam}</div>
+                    <div className="text-[10px] truncate leading-tight opacity-80">{t(item.homeTeam)}</div>
                     <div className="font-mono font-bold text-xs mt-0.5">
-                      {m.home.odds.toFixed(2)}
+                      {t(m.home.odds.toFixed(2))}
                     </div>
                   </button>
 
@@ -225,9 +226,9 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
                           : 'bg-[#1d1834] hover:bg-[#262044] border border-[#29234a] text-zinc-200'
                       }`}
                     >
-                      <div className="text-[10px] truncate leading-tight opacity-80">Empate</div>
+                      <div className="text-[10px] truncate leading-tight opacity-80">{t("Empate")}</div>
                       <div className="font-mono font-bold text-xs mt-0.5">
-                        {m.draw.odds.toFixed(2)}
+                        {t(m.draw.odds.toFixed(2))}
                       </div>
                     </button>
                   )}
@@ -250,9 +251,9 @@ export const PopularMultiples: React.FC<PopularMultiplesProps> = ({
                         : 'bg-[#1d1834] hover:bg-[#262044] border border-[#29234a] text-zinc-200'
                     }`}
                   >
-                    <div className="text-[10px] truncate leading-tight opacity-80">{item.awayTeam}</div>
+                    <div className="text-[10px] truncate leading-tight opacity-80">{t(item.awayTeam)}</div>
                     <div className="font-mono font-bold text-xs mt-0.5">
-                      {m.away.odds.toFixed(2)}
+                      {t(m.away.odds.toFixed(2))}
                     </div>
                   </button>
                 </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Star as StarIcon } from 'lucide-react';
+import { t } from '../i18n';
 
 const masJugadosGames = [
   { id: 1, title: 'Fortune Rabbit', provider: 'PGSoft', img: 'https://salsa-tech.com/wp-content/uploads/pulpo/cards/001.webp' },
@@ -54,18 +55,18 @@ export default function MiniMasJugadosCarousel({ onPlayGame }: { onPlayGame?: (g
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/30 via-transparent to-transparent transition-transform duration-500 group-hover:scale-110"></div>
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110 opacity-100" style={{ backgroundImage: `url("${game.img}")` }}></div>
                   
-                  {idx === 0 && page === 0 && <div className="absolute top-2 left-2 bg-pink-600 text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md">DESTACADO</div>}
-                  {idx === 1 && page === 0 && <div className="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md">NUEVO</div>}
+                  {idx === 0 && page === 0 && <div className="absolute top-2 left-2 bg-pink-600 text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md">{t("DESTACADO")}</div>}
+                  {idx === 1 && page === 0 && <div className="absolute top-2 left-2 bg-green-600 text-white text-[10px] font-black px-2 py-0.5 rounded-sm uppercase tracking-wider z-10 shadow-md">{t("NUEVO")}</div>}
                   
                   <div className="absolute top-2 right-2 text-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"><StarIcon size={18} fill="currentColor" /></div>
                   
                   <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 flex flex-col justify-end translate-y-2 group-hover:translate-y-0">
                     <span className="text-white font-bold text-[13px] leading-tight truncate">
-                      {game.title}
+                      {t(game.title)}
                     </span>
                     <span className="text-gray-400 text-[10px]">
-                      {game.provider}
+                      {t(game.provider)}
                     </span>
                   </div>
                 </div>

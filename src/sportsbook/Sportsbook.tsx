@@ -10,6 +10,7 @@ import { PitchTracker } from './components/PitchTracker';
 import { BetSlip } from './components/BetSlip';
 import { MobileView } from './components/MobileView';
 import { PromoModal } from './components/PromoModal';
+import { t } from '../i18n';
 
 interface SportsbookProps {
   isLoggedIn?: boolean;
@@ -71,7 +72,7 @@ export default function Sportsbook({ isLoggedIn = false, onOpenLogin }: Sportsbo
             <div className="bg-[#100d20] border-t border-[#2a2745] rounded-t-2xl max-h-[85vh] overflow-y-auto p-4 flex flex-col space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-[#2a2745]">
                 <h3 className="text-sm font-black text-white uppercase tracking-wider">
-                  Cupom de Apostas ({selections.length})
+                  {t("Cupom de Apostas (")}{t(selections.length)})
                 </h3>
                 <button
                   onClick={() => setIsMobileBetslipOpen(false)}
@@ -80,10 +81,10 @@ export default function Sportsbook({ isLoggedIn = false, onOpenLogin }: Sportsbo
                   ✕
                 </button>
               </div>
-              {betSlip((stake, win) => {
+              {t(betSlip((stake, win) => {
                 handlePlaceBetSuccess(stake);
                 setIsMobileBetslipOpen(false);
-              })}
+              }))}
             </div>
           </div>
         )}
@@ -118,11 +119,11 @@ export default function Sportsbook({ isLoggedIn = false, onOpenLogin }: Sportsbo
 
         <div className="w-[300px] xl:w-[320px] shrink-0 space-y-4">
           <PitchTracker />
-          {betSlip((stake) => handlePlaceBetSuccess(stake))}
+          {t(betSlip((stake) => handlePlaceBetSuccess(stake)))}
         </div>
       </div>
 
-      <PromoModal isOpen={!!promoModalTitle} onClose={() => setPromoModalTitle(null)} title={promoModalTitle || ''} />
+      <PromoModal isOpen={!!promoModalTitle} onClose={() => setPromoModalTitle(null)} title={t(promoModalTitle || '')} />
     </div>
   );
 }

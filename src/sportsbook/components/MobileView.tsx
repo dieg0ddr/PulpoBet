@@ -23,6 +23,7 @@ import {
   BasketballIcon,
   EsportsIcon,
 } from './SportIcons';
+import { t } from '../../i18n';
 
 interface MobileViewProps {
   user: UserAccount;
@@ -236,10 +237,10 @@ export const MobileView: React.FC<MobileViewProps> = ({
           {/* Card 1 */}
           <div className="shrink-0 w-36 h-28 rounded-xl bg-gradient-to-b from-[#18142c] to-[#0f0c1d] border border-[#241e40] p-2.5 flex flex-col justify-between relative overflow-hidden shadow-lg group cursor-pointer hover:border-[#8f4bff]/40 transition-colors">
             <div className="bg-[#8f4bff] text-white text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded w-max">
-              JOGO RESPONSÁVEL
+              {t("JOGO RESPONSÁVEL")}
             </div>
             <div className="text-xs font-black text-white leading-tight z-10">
-              Aposte com Consciência
+              {t("Aposte com Consciência")}
             </div>
             <div className="absolute right-1 bottom-1 text-2xl opacity-60">🛡️</div>
           </div>
@@ -247,10 +248,10 @@ export const MobileView: React.FC<MobileViewProps> = ({
           {/* Card 2 */}
           <div className="shrink-0 w-36 h-28 rounded-xl bg-gradient-to-b from-[#18142c] to-[#0f0c1d] border border-[#241e40] p-2.5 flex flex-col justify-between relative overflow-hidden shadow-lg group cursor-pointer hover:border-[#8f4bff]/40 transition-colors">
             <div className="bg-[#8f4bff] text-white text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded w-max">
-              APP ANDROID
+              {t("APP ANDROID")}
             </div>
             <div className="text-xs font-black text-white leading-tight z-10">
-              Baixe para Android!
+              {t("Baixe para Android!")}
             </div>
             <div className="absolute right-1 bottom-1 text-2xl opacity-60">📱</div>
           </div>
@@ -258,10 +259,10 @@ export const MobileView: React.FC<MobileViewProps> = ({
           {/* Card 3 */}
           <div className="shrink-0 w-36 h-28 rounded-xl bg-gradient-to-b from-[#18142c] to-[#0f0c1d] border border-[#241e40] p-2.5 flex flex-col justify-between relative overflow-hidden shadow-lg group cursor-pointer hover:border-[#8f4bff]/40 transition-colors">
             <div className="bg-[#8f4bff] text-white text-[8px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded w-max">
-              APP APPLE
+              {t("APP APPLE")}
             </div>
             <div className="text-xs font-black text-white leading-tight z-10">
-              Baixe para iOS!
+              {t("Baixe para iOS!")}
             </div>
             <div className="absolute right-1 bottom-1 text-2xl opacity-60">🍏</div>
           </div>
@@ -271,7 +272,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
       {/* 3. Section Title & Toggle Buttons: JUNTE-SE À AÇÃO */}
       <div className="px-3 pt-5 pb-3 flex items-center justify-between">
         <h2 className="text-lg font-black tracking-wider text-white uppercase italic">
-          JUNTE-SE À AÇÃO
+          {t("JUNTE-SE À AÇÃO")}
         </h2>
 
         <div className="flex items-center gap-1.5 bg-[#131025] p-0.5 rounded-full border border-[#241e40]">
@@ -284,7 +285,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
             }`}
           >
             <Zap className="w-3.5 h-3.5 text-[#8f4bff] fill-[#8f4bff]" />
-            <span>Ao Vivo</span>
+            <span>{t("Ao Vivo")}</span>
           </button>
           <button
             onClick={() => setActiveActionFilter('proximos')}
@@ -295,7 +296,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
             }`}
           >
             <Clock className="w-3.5 h-3.5 text-zinc-400" />
-            <span>Próximos</span>
+            <span>{t("Próximos")}</span>
           </button>
         </div>
       </div>
@@ -315,8 +316,8 @@ export const MobileView: React.FC<MobileViewProps> = ({
                     : 'bg-[#131024] border-[#221d3b] text-zinc-400 hover:text-zinc-200 hover:bg-[#18142e]'
                 }`}
               >
-                {sport.icon}
-                <span className="text-[11px] font-semibold">{sport.label}</span>
+                {t(sport.icon)}
+                <span className="text-[11px] font-semibold">{t(sport.label)}</span>
               </button>
             );
           })}
@@ -334,7 +335,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
                 : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
-            Mercados populares
+            {t("Mercados populares")}
           </button>
           <button
             onClick={() => setActiveMarketTab('maismenos')}
@@ -344,7 +345,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
                 : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
-            Mais/Menos
+            {t("Mais/Menos")}
           </button>
           <button
             onClick={() => setActiveMarketTab('ambos')}
@@ -354,7 +355,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
                 : 'border-transparent text-zinc-400 hover:text-zinc-200'
             }`}
           >
-            Ambos marcam
+            {t("Ambos marcam")}
           </button>
         </div>
       </div>
@@ -379,16 +380,16 @@ export const MobileView: React.FC<MobileViewProps> = ({
                   {match.isLive ? (
                     <span className="flex items-center gap-1 text-[#8f4bff] font-bold">
                       <Zap className="w-3.5 h-3.5 fill-[#8f4bff]" />
-                      {match.time}
+                      {t(match.time)}
                     </span>
                   ) : (
-                    <span>{match.time}</span>
+                    <span>{t(match.time)}</span>
                   )}
                   {match.hasStream && (
                     <Play className="w-3.5 h-3.5 fill-zinc-400 text-zinc-400" />
                   )}
                   {match.hasSuperOdds && (
-                    <span className="text-[#8f4bff] font-bold flex items-center gap-0.5" title="Super Odds">
+                    <span className="text-[#8f4bff] font-bold flex items-center gap-0.5" title={t("Super Odds")}>
                       <Flame className="w-3.5 h-3.5 fill-[#8f4bff]" />
                     </span>
                   )}
@@ -396,7 +397,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
 
                 <button
                   className="text-zinc-500 hover:text-zinc-300 transition-colors"
-                  title="Estatísticas do Jogo"
+                  title={t("Estatísticas do Jogo")}
                 >
                   <BarChart2 className="w-4 h-4" />
                 </button>
@@ -406,21 +407,21 @@ export const MobileView: React.FC<MobileViewProps> = ({
               <div className="space-y-1">
                 <div className="flex items-center justify-between text-xs font-bold text-zinc-100">
                   <div className="flex items-center gap-2">
-                    <span className="text-base leading-none">{match.homeFlag}</span>
-                    <span>{match.homeTeam}</span>
+                    <span className="text-base leading-none">{t(match.homeFlag)}</span>
+                    <span>{t(match.homeTeam)}</span>
                   </div>
                   {match.homeScore !== undefined && (
-                    <span className="font-mono text-sm text-white font-black">{match.homeScore}</span>
+                    <span className="font-mono text-sm text-white font-black">{t(match.homeScore)}</span>
                   )}
                 </div>
 
                 <div className="flex items-center justify-between text-xs font-bold text-zinc-100">
                   <div className="flex items-center gap-2">
-                    <span className="text-base leading-none">{match.awayFlag}</span>
-                    <span>{match.awayTeam}</span>
+                    <span className="text-base leading-none">{t(match.awayFlag)}</span>
+                    <span>{t(match.awayTeam)}</span>
                   </div>
                   {match.awayScore !== undefined && (
-                    <span className="font-mono text-sm text-white font-black">{match.awayScore}</span>
+                    <span className="font-mono text-sm text-white font-black">{t(match.awayScore)}</span>
                   )}
                 </div>
               </div>
@@ -428,7 +429,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
               {/* Competition subtitle */}
               <div className="flex items-center gap-1.5 text-[10px] text-zinc-400 font-medium">
                 <span>⚽</span>
-                <span className="truncate">{match.competition}</span>
+                <span className="truncate">{t(match.competition)}</span>
               </div>
 
               {/* Odds Row (1 X 2) with Neon Green Numbers */}
@@ -446,7 +447,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
                     1
                   </span>
                   <span className={`text-xs font-black ${isHomeSelected ? 'text-white' : 'text-[#8f4bff]'}`}>
-                    {match.odds.home.toFixed(2)}
+                    {t(match.odds.home.toFixed(2))}
                   </span>
                 </button>
 
@@ -460,10 +461,10 @@ export const MobileView: React.FC<MobileViewProps> = ({
                   }`}
                 >
                   <span className={`text-[11px] font-bold ${isDrawSelected ? 'text-white' : 'text-zinc-400'}`}>
-                    X
+                    {t("X")}
                   </span>
                   <span className={`text-xs font-black ${isDrawSelected ? 'text-white' : 'text-[#8f4bff]'}`}>
-                    {match.odds.draw.toFixed(2)}
+                    {t(match.odds.draw.toFixed(2))}
                   </span>
                 </button>
 
@@ -480,7 +481,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
                     2
                   </span>
                   <span className={`text-xs font-black ${isAwaySelected ? 'text-white' : 'text-[#8f4bff]'}`}>
-                    {match.odds.away.toFixed(2)}
+                    {t(match.odds.away.toFixed(2))}
                   </span>
                 </button>
               </div>
@@ -495,7 +496,7 @@ export const MobileView: React.FC<MobileViewProps> = ({
           onClick={() => {}}
           className="w-full py-3 bg-[#1b1632] hover:bg-[#221c40] border border-[#2c254e] hover:border-[#8f4bff]/50 rounded-xl text-center font-black text-xs text-zinc-200 tracking-wider uppercase transition-colors shadow-sm"
         >
-          MAIS EVENTOS
+          {t("MAIS EVENTOS")}
         </button>
       </div>
 
@@ -506,8 +507,8 @@ export const MobileView: React.FC<MobileViewProps> = ({
           className="fixed bottom-24 right-4 z-40 flex items-center gap-2 bg-[#8f4bff] hover:bg-[#7c3aed] text-white text-xs font-black uppercase px-4 py-3 rounded-full shadow-[0_0_20px_rgba(143,75,255,0.5)] transition-colors"
         >
           <FileText className="w-4 h-4" />
-          Cupom
-          <span className="w-5 h-5 rounded-full bg-white text-[#7c3aed] text-[10px] flex items-center justify-center">{selectedOdds.length}</span>
+          {t("Cupom")}
+          <span className="w-5 h-5 rounded-full bg-white text-[#7c3aed] text-[10px] flex items-center justify-center">{t(selectedOdds.length)}</span>
         </button>
       )}
     </div>

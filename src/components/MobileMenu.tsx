@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Gamepad2, Compass, Gift, Info, HeadphonesIcon, ChevronDown, ChevronUp, Dribbble, Club, Cherry, Video, Rocket, CircleDashed, Star, Crown, Smile, Trophy, Medal } from 'lucide-react';
+import { t } from '../i18n';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -75,7 +76,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               >
                 <div className="flex items-center gap-3">
                   <Cherry size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Slots</span>
+                  <span className="font-medium text-[15px]">{t("Slots")}</span>
                 </div>
                 {expandedSection === 'slots' ? (
                   <ChevronUp size={18} className="text-[#d8b4fe]" />
@@ -104,7 +105,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
                               referrerPolicy="no-referrer"
                             />
                           </div>
-                          <span className="text-gray-300 text-sm font-medium group-hover:text-white transition-colors">{provider.name}</span>
+                          <span className="text-gray-300 text-sm font-medium group-hover:text-white transition-colors">{t(provider.name)}</span>
                         </div>
                       ))}
                     </div>
@@ -116,7 +117,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Crown size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Special Slots</span>
+                  <span className="font-medium text-[15px]">{t("Special Slots")}</span>
                 </div>
                 <ChevronDown size={18} className="text-[#d8b4fe]" />
               </button>
@@ -125,7 +126,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Smile size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Jokers</span>
+                  <span className="font-medium text-[15px]">{t("Jokers")}</span>
                 </div>
               </button>
             </div>
@@ -133,7 +134,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Trophy size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Top 50</span>
+                  <span className="font-medium text-[15px]">{t("Top 50")}</span>
                 </div>
               </button>
             </div>
@@ -141,7 +142,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Dribbble size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Deportes</span>
+                  <span className="font-medium text-[15px]">{t("Deportes")}</span>
                 </div>
                 <ChevronDown size={18} className="text-[#d8b4fe]" />
               </button>
@@ -150,7 +151,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Video size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Casino en vivo</span>
+                  <span className="font-medium text-[15px]">{t("Casino en vivo")}</span>
                 </div>
                 <ChevronDown size={18} className="text-[#d8b4fe]" />
               </button>
@@ -159,7 +160,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Medal size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Torneos</span>
+                  <span className="font-medium text-[15px]">{t("Torneos")}</span>
                 </div>
               </button>
             </div>
@@ -167,7 +168,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Rocket size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Crash Games</span>
+                  <span className="font-medium text-[15px]">{t("Crash Games")}</span>
                 </div>
               </button>
             </div>
@@ -175,7 +176,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <CircleDashed size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Bingo</span>
+                  <span className="font-medium text-[15px]">{t("Bingo")}</span>
                 </div>
                 <ChevronDown size={18} className="text-[#d8b4fe]" />
               </button>
@@ -186,7 +187,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
                   <div className="w-5 flex justify-center text-[#d8b4fe]">
                     <span className="flex items-center justify-center font-bold text-lg leading-none" style={{ fontFamily: 'serif' }}>♞</span>
                   </div>
-                  <span className="font-medium text-[15px]">Hípicas</span>
+                  <span className="font-medium text-[15px]">{t("Hípicas")}</span>
                 </div>
               </button>
             </div>
@@ -199,7 +200,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               >
                 <div className="flex items-center gap-3">
                   <Compass size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Descubrir</span>
+                  <span className="font-medium text-[15px]">{t("Descubrir")}</span>
                 </div>
                 {expandedSection === 'descubrir' ? (
                   <ChevronUp size={18} className="text-[#d8b4fe]" />
@@ -217,7 +218,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               >
                 <div className="flex items-center gap-3">
                   <Gift size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Promociones</span>
+                  <span className="font-medium text-[15px]">{t("Promociones")}</span>
                 </div>
               </button>
             </div>
@@ -230,7 +231,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               >
                 <div className="flex items-center gap-3">
                   <Info size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Información</span>
+                  <span className="font-medium text-[15px]">{t("Información")}</span>
                 </div>
                 {expandedSection === 'informacion' ? (
                   <ChevronUp size={18} className="text-[#d8b4fe]" />
@@ -248,7 +249,7 @@ export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuPr
               >
                 <div className="flex items-center gap-3">
                   <HeadphonesIcon size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
-                  <span className="font-medium text-[15px]">Soporte</span>
+                  <span className="font-medium text-[15px]">{t("Soporte")}</span>
                 </div>
                 {expandedSection === 'soporte' ? (
                   <ChevronUp size={18} className="text-[#d8b4fe]" />
@@ -270,14 +271,14 @@ function MenuItem({ icon, text, isMaterial, isFirst }: { icon: any, text: string
     <div className={`flex items-center gap-3 py-3 px-4 hover:bg-[#1a1733] cursor-pointer transition-colors ${!isFirst ? 'border-t border-[#2a2745]/50' : ''}`}>
       <div className="w-6 flex justify-center">
         {isMaterial ? (
-          <span className="material-symbols-outlined text-[#d8b4fe]" style={{ fontSize: '20px', fontWeight: 300 }}>{icon}</span>
+          <span className="material-symbols-outlined text-[#d8b4fe]" style={{ fontSize: '20px', fontWeight: 300 }}>{t(icon)}</span>
         ) : (
           React.isValidElement(icon) && typeof icon.type !== 'string'
             ? React.cloneElement(icon as React.ReactElement<any>, { size: 20, className: "text-[#d8b4fe]", strokeWidth: 1.5 })
             : icon
         )}
       </div>
-      <span className="text-gray-200 text-sm font-medium">{text}</span>
+      <span className="text-gray-200 text-sm font-medium">{t(text)}</span>
     </div>
   );
 }

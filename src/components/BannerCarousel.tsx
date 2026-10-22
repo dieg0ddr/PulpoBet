@@ -14,7 +14,7 @@ export const banners = [
     buttonText: 'PARTICIPAR AHORA',
     bgGradient: 'from-[#120a2e] to-[#0a0517]',
     blobGradient: 'from-purple-600 to-blue-500',
-    image: 'https://cms.pulpobet.club/media/images/backbanners/img_WEB_ES_bebb903b-e3ec-4f0f-9631-fa4fddc61c97.jpg'
+    image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Banner%201.jpg'
   },
   {
     id: 2,
@@ -27,7 +27,7 @@ export const banners = [
     buttonText: 'JUGÁ AHORA',
     bgGradient: 'from-[#1a1205] to-[#0d0902]',
     blobGradient: 'from-yellow-600 to-orange-500',
-    image: 'https://cms.pulpobet.club/media/images/backbanners/img_WEB_ES_d835dfda-4fe2-4d79-a66a-55b864a4b7fe.jpg'
+    image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Banner%202.jpg'
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ export const banners = [
     buttonText: 'JUGÁ AHORA',
     bgGradient: 'from-[#1a0512] to-[#0d0209]',
     blobGradient: 'from-pink-600 to-rose-500',
-    image: 'https://cms.pulpobet.club/media/images/backbanners/img_WEB_ES_9bc75989-6518-4c8e-a2bc-c17cf10e5c9d.jpg'
+    image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Banner%203.png'
   }
 ];
 

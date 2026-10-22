@@ -1012,7 +1012,7 @@ useEffect(() => {
       </AnimatePresence>
 
       {/* Main Side Menu Drawer */}
-      <MobileMenu isOpen={isMainMenuOpen} onClose={() => setIsMainMenuOpen(false)} />
+      <MobileMenu isOpen={isMainMenuOpen} onClose={() => setIsMainMenuOpen(false)} onNavigate={(page) => setCurrentPage(page as any)} />
 
       {/* Mobile Bottom App Bar */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#070514] border-t border-[#2a2745] flex items-center justify-around pb-6 pt-2 px-2 z-50">

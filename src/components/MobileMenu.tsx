@@ -5,6 +5,7 @@ import { Gamepad2, Compass, Gift, Info, HeadphonesIcon, ChevronDown, ChevronUp, 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  onNavigate?: (page: string) => void;
 }
 
 const slotProviders = [
@@ -47,7 +48,7 @@ const slotProviders = [
   { name: 'ZeusPlay', url: 'https://salsa-tech.com/wp-content/uploads/pulpo/SLOTS/zeusplay.png' }
 ];
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, onNavigate }: MobileMenuProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
@@ -112,7 +113,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </AnimatePresence>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Crown size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
                   <span className="font-medium text-[15px]">Special Slots</span>
@@ -129,7 +130,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Trophy size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
                   <span className="font-medium text-[15px]">Top 50</span>
@@ -155,7 +156,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Medal size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
                   <span className="font-medium text-[15px]">Torneos</span>
@@ -163,7 +164,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <Rocket size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
                   <span className="font-medium text-[15px]">Crash Games</span>
@@ -171,7 +172,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <CircleDashed size={20} className="text-[#d8b4fe]" strokeWidth={1.5} />
                   <span className="font-medium text-[15px]">Bingo</span>
@@ -180,7 +181,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
             <div className="border border-[#2a2745] rounded-xl bg-[#0f0c29] overflow-hidden">
-              <button className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
+              <button onClick={() => { onNavigate?.('slots'); onClose(); }} className="w-full flex items-center justify-between p-4 bg-[#0f0c29] text-white hover:bg-[#141226] transition-colors">
                 <div className="flex items-center gap-3">
                   <div className="w-5 flex justify-center text-[#d8b4fe]">
                     <span className="flex items-center justify-center font-bold text-lg leading-none" style={{ fontFamily: 'serif' }}>♞</span>

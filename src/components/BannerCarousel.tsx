@@ -68,9 +68,19 @@ export default function BannerCarousel({ containerClassName = "relative flex-[3.
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="absolute inset-0 bg-cover bg-center z-0"
-            style={{ backgroundImage: `url(${displayBanners[bannerIndex].image})` }}
-          />
+            className="absolute inset-0 z-0"
+          >
+            <div
+              className={`absolute inset-0 bg-cover bg-center ${displayBanners[bannerIndex].mobileImage ? 'hidden md:block' : ''}`}
+              style={{ backgroundImage: `url("${displayBanners[bannerIndex].image}")` }}
+            />
+            {displayBanners[bannerIndex].mobileImage && (
+              <div
+                className="absolute inset-0 bg-cover bg-center md:hidden"
+                style={{ backgroundImage: `url("${displayBanners[bannerIndex].mobileImage}")` }}
+              />
+            )}
+          </motion.div>
         )}
       </AnimatePresence>
       {!displayBanners[bannerIndex].image && (

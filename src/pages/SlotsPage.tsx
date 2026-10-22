@@ -6,8 +6,8 @@ import MiniMasJugadosCarousel from '../components/MiniMasJugadosCarousel';
 
 
 const slotsBanners = [
-  { id: 1, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Mas%20Jugados.jpg' },
-  { id: 2, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Mas%20Jugados.jpg' }
+  { id: 1, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Los%20mas%20jugados.jpg', mobileImage: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Los%20mas%20jugados%20mobile.jpg' },
+  { id: 2, image: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Jokers.jpg', mobileImage: 'https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/Jokers-mobile.jpg' }
 ];
 
 export default function SlotsPage({ onPlayGame }: { onPlayGame?: (game: any) => void }) {

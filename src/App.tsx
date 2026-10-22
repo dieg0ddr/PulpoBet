@@ -624,7 +624,7 @@ useEffect(() => {
       ) : currentPage === 'promociones' ? (
         <PromocionesPage />
       ) : currentPage === 'deportes' ? (
-        <DeportesPage games={masJugadosGames} onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} />
+        <DeportesPage games={masJugadosGames} onPlayGame={(game) => { setActiveGame(game); setCurrentPage('game'); }} isLoggedIn={isLoggedIn} onOpenLogin={() => setIsLoginModalOpen(true)} />
       ) : null}
 
       <ProfilePage 

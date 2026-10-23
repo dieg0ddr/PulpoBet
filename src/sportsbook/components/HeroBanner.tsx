@@ -45,12 +45,12 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({ onLearnMore }) => {
         </div>
 
         {/* Right Side */}
-        <div className="bg-[#16122a]/80 border border-[#251e49]/60 rounded-xl p-4 md:max-w-xs backdrop-blur-xs">
+        <div className="bg-white/[0.06] border border-white/15 rounded-xl p-4 md:max-w-xs backdrop-blur-md backdrop-saturate-150 shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_8px_32px_rgba(0,0,0,0.35)]">
           <div className="flex items-center gap-2 text-[#8f4bff] text-xs font-bold uppercase tracking-wider mb-1">
             <Trophy className="w-3.5 h-3.5" />
             <span>{t("GRANDES JOGOS")}</span>
           </div>
-          <p className="text-xs text-zinc-300 leading-relaxed">
+          <p className="text-xs text-zinc-100 leading-relaxed">
             {t("Os clássicos da rodada, com os mercados principais e cotações turbinadas para você apostar.")}
           </p>
         </div>

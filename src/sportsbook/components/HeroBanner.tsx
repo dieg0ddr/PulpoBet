@@ -9,6 +9,13 @@ interface HeroBannerProps {
 export const HeroBanner: React.FC<HeroBannerProps> = ({ onLearnMore }) => {
   return (
     <div className="relative overflow-hidden rounded-xl bg-gradient-to-r from-[#100c22] via-[#130f28] to-[#16122c] border border-[#211b3d] p-5 sm:p-6 shadow-xl">
+      {/* Background image + legibility overlay (darker on the left, where the title sits) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center pointer-events-none"
+        style={{ backgroundImage: 'url("https://dlwtwnztrfjsyipvwtqm.supabase.co/storage/v1/object/public/Diego%20Portfolio/Salsa/App_Banners/Pulpobet/BG_UEFA.jpg")' }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#0b0818]/90 via-[#0b0818]/55 to-[#0b0818]/20 pointer-events-none"></div>
+
       {/* Background glow highlights */}
       <div className="absolute top-0 right-1/4 w-80 h-80 bg-[#8f4bff]/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2"></div>
       <div className="absolute bottom-0 right-0 w-60 h-60 bg-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
